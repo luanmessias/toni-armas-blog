@@ -16,7 +16,7 @@ const Theme: React.FC = ({ children }): JSX.Element => {
   const { darkMode } = useDarkModeContext()
 
   const setTheme = (): ThemeType => {
-    if (!darkMode) {
+    if (darkMode) {
       return darkTheme
     }
     return lightTheme
