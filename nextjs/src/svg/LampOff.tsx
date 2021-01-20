@@ -1,6 +1,6 @@
 import React from 'react'
 
-const lampOffSVG = (props): JSX.Element => (
+const lampOffSVG: React.FC = props => (
   <svg width={14} height={21} viewBox="0 0 14 21" fill="none" {...props}>
     <path
       fillRule="evenodd"

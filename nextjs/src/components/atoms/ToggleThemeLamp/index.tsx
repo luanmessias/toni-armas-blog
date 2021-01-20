@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDarkModeContext } from '@context/DarkMode'
-import { Container } from './styled'
+import { Container } from './styles'
 import LampOffSVG from '../../../svg/LampOff'
 import LampOnSVG from '../../../svg/LampOn'
 
