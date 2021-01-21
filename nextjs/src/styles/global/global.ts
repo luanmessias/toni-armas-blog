@@ -54,8 +54,8 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   padding: 15px;
-  margin-left: 325px;
-  margin-right: 65px;
+  margin-left: ${({ theme }) => theme.l_aside_width};
+  margin-right: ${({ theme }) => theme.r_aside_width};
 `
 
 export const Wrapper = styled(motion.div)`

@@ -5,6 +5,7 @@ import { DarkModeProvider } from '@context/DarkMode'
 import GlobalNormalize from '@globalStyles/normalize'
 import RightAside from '@components/molecules/RightAside'
 import LeftAside from '@components/molecules/LeftAside'
+import { SearchFormProvider } from '@context/SearchFrorm'
 import GlobalStyles, { Main, Wrapper } from '../styles/global/global'
 
 export default function MyApp({
@@ -15,13 +16,15 @@ export default function MyApp({
   return (
     <DarkModeProvider>
       <Theme>
-        <Wrapper>
-          <LeftAside />
-          <Main>
-            <Component {...pageProps} key={router.route} />
-          </Main>
-          <RightAside />
-        </Wrapper>
+        <SearchFormProvider>
+          <Wrapper>
+            <LeftAside />
+            <Main>
+              <Component {...pageProps} key={router.route} />
+            </Main>
+            <RightAside />
+          </Wrapper>
+        </SearchFormProvider>
         <GlobalNormalize />
         <GlobalStyles />
       </Theme>

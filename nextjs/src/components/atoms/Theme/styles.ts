@@ -1,3 +1,11 @@
+export const defaultTheme = {
+  color_orange_light: '#ff7b29',
+  color_orange_medium: '#FF6000',
+  color_orange_dark: '#ac4200',
+  l_aside_width: '320px',
+  r_aside_width: '60px'
+}
+
 export const darkTheme = {
   bg_body: '#383838',
   bg_dark: '#272727',
@@ -6,9 +14,7 @@ export const darkTheme = {
   txt_color_dark: '#646464',
   txt_color_mid: '#E8E8E8',
   txt_color_light: '#FFF',
-  color_orange_light: '#ff7b29',
-  color_orange_medium: '#FF6000',
-  color_orange_dark: '#ac4200'
+  ...defaultTheme
 }
 
 export const lightTheme = {
@@ -19,7 +25,5 @@ export const lightTheme = {
   txt_color_dark: '#272727',
   txt_color_mid: '#383838',
   txt_color_light: '#FFF',
-  color_orange_light: '#ff7b29',
-  color_orange_medium: '#FF6000',
-  color_orange_dark: '#ac4200'
+  ...defaultTheme
 }

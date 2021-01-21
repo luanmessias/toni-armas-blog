@@ -10,7 +10,7 @@ export const Container = styled.aside<any>`
   justify-content: space-between;
   position: fixed;
   height: 100%;
-  width: 60px;
+  width: ${({ theme }) => theme.r_aside_width};
   top: 0;
   right: 0;
   > div {
