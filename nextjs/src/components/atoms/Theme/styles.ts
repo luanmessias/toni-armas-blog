@@ -5,7 +5,10 @@ export const darkTheme = {
   border_color: '#515151',
   txt_color_dark: '#646464',
   txt_color_mid: '#E8E8E8',
-  txt_color_light: '#FFF'
+  txt_color_light: '#FFF',
+  color_orange_light: '#ff7b29',
+  color_orange_medium: '#FF6000',
+  color_orange_dark: '#ac4200'
 }
 
 export const lightTheme = {
@@ -15,5 +18,8 @@ export const lightTheme = {
   border_color: '#A6A6A6',
   txt_color_dark: '#272727',
   txt_color_mid: '#383838',
-  txt_color_light: '#FFF'
+  txt_color_light: '#FFF',
+  color_orange_light: '#ff7b29',
+  color_orange_medium: '#FF6000',
+  color_orange_dark: '#ac4200'
 }

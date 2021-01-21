@@ -16,6 +16,29 @@ const GlobalStyle = createGlobalStyle<any>`
 body {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
   background: ${({ theme }) => theme.bg_body};
+
+  overflow-x: hidden;
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: #000;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.color_orange_medium};
+    border-radius: 5px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${({ theme }) => theme.color_orange_medium};
+  }
 }
 
 #__next {
@@ -27,10 +50,12 @@ body {
 export const Main = styled.main`
   box-sizing: border-box;
   height: 100%;
-  flex: 1;
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding: 15px;
+  margin-left: 325px;
+  margin-right: 65px;
 `
 
 export const Wrapper = styled(motion.div)`

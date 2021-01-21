@@ -8,9 +8,24 @@ export const Container = styled.aside<any>`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  height: 100%;
+  width: 60px;
+  top: 0;
+  right: 0;
   > div {
     > div {
-      padding: 10px 20px;
+      padding: 20px;
+
+      &:hover {
+        svg {
+          transform: scale(1.2);
+          fill: ${({ theme }) => theme.color_orange_medium};
+          * {
+            fill: ${({ theme }) => theme.color_orange_medium};
+          }
+        }
+      }
     }
   }
 `
