@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle<any>`
 body {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
   background: ${({ theme }) => theme.bg_body};
+  color: ${({ theme }) => theme.txt_color_base};
 
   overflow-x: hidden;
 

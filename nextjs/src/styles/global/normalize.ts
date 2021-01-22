@@ -350,6 +350,13 @@ template {
 [hidden] {
   display: none;
 }
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
 `
 
 export default GlobalNormalize

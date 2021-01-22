@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSearchFormContext } from '@context/SearchFrorm'
-import { Container } from './styles'
+import { Container, SearchTitle, SearchInput } from './styles'
 
 const SearchBar: React.FC = () => {
   const { searchForm } = useSearchFormContext()
@@ -8,10 +8,9 @@ const SearchBar: React.FC = () => {
   return (
     <>
       <Container data-active={searchForm}>
-        <h1>asdas</h1>
+        <SearchTitle>Buscar postagem</SearchTitle>
         <form>
-          <input type="text" />
-          <button type="button">BUSCAR</button>
+          <SearchInput type="text" />
         </form>
       </Container>
     </>

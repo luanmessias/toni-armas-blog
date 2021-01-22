@@ -8,7 +8,10 @@ const SearchButton: React.FC = () => {
 
   return (
     <>
-      <Container onClick={() => setSearchForm(!searchForm)}>
+      <Container
+        data-active={searchForm}
+        onClick={() => setSearchForm(!searchForm)}
+      >
         <SearchSVG />
       </Container>
     </>
