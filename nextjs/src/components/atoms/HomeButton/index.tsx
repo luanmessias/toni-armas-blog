@@ -20,7 +20,7 @@ const HomeButton: React.FC = () => {
     <>
       <Container data-active={isHomePage}>
         <Link href="/">
-          <a>
+          <a aria-label="Botao Home">
             <HomeIconSVG />
           </a>
         </Link>

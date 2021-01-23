@@ -18,7 +18,7 @@ const Logo: React.FC = () => {
   return (
     <>
       <Link href="/">
-        <a>
+        <a aria-label="Logo Toni Armas">
           <Container>{checkThemeLamp()}</Container>
         </a>
       </Link>

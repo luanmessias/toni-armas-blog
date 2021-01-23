@@ -36,7 +36,7 @@ const MainMenu: React.FC = () => {
         <MenuItem data-active={isHomePage}>
           <HomeIconSVG />
           <Link href="/">
-            <a rel="noreferrer" href="/">
+            <a aria-label="Pagina principal" rel="noreferrer" href="/">
               Home
             </a>
           </Link>
@@ -44,7 +44,7 @@ const MainMenu: React.FC = () => {
         <MenuItem data-active={isWhoWeAre}>
           <PersonSVG />
           <Link href="quem-somos">
-            <a rel="noreferrer" href="quem-somos">
+            <a aria-label="Quem somos" rel="noreferrer" href="quem-somos">
               Quem Somos
             </a>
           </Link>
@@ -52,7 +52,7 @@ const MainMenu: React.FC = () => {
         <MenuItem>
           <TargetSVG />
           <Link href="/">
-            <a rel="noreferrer" href="/">
+            <a aria-label="Curso de Tiro" rel="noreferrer" href="/">
               Curso de Tiro
             </a>
           </Link>
@@ -64,6 +64,7 @@ const MainMenu: React.FC = () => {
               href="https://www.lojatoniarmas.com.br/"
               rel="noreferrer"
               target="_blank"
+              aria-label="Loja Toni Armas"
             >
               Nossa loja
             </a>
