@@ -5,14 +5,18 @@ import HomeIconSVG from '@svg/Home'
 import PersonSVG from '@svg/Person'
 import TargetSVG from '@svg/Target'
 import CartSVG from '@svg/Cart'
+import { useMobileMenuContext } from '@context/MobileMenu'
 import { Container, MenuItem } from './styles'
 
 const MainMenu: React.FC = () => {
   const [isHomePage, setIsHomePage] = useState(false)
   const [isWhoWeAre, setIsWhoWeAre] = useState(false)
+  const { setMobileMenu } = useMobileMenuContext()
+
   const router = useRouter()
 
   useEffect(() => {
+    setMobileMenu(false)
     if (router.pathname !== '/') {
       setIsHomePage(false)
     } else {

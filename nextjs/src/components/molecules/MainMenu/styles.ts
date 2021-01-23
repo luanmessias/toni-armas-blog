@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { minDevice, maxDevice } from '@globalStyles/device'
 
 export const Container = styled.ul`
   box-sizing: border-box;
@@ -8,6 +9,11 @@ export const Container = styled.ul`
   justify-content: center;
   width: 100%;
   margin-top: 40px;
+  max-width: 400px;
+
+  @media ${maxDevice.laptop} {
+    align-items: center;
+  }
 `
 
 export const MenuItem = styled.li`
@@ -43,5 +49,14 @@ export const MenuItem = styled.li`
     text-decoration: none;
     font-size: 20px;
     color: ${({ theme }) => theme.txt_color_base};
+  }
+
+  @media ${maxDevice.laptop} {
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      display: none;
+    }
   }
 `

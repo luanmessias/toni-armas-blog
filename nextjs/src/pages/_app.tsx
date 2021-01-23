@@ -6,6 +6,8 @@ import GlobalNormalize from '@globalStyles/normalize'
 import RightAside from '@organisms/RightAside'
 import LeftAside from '@organisms/LeftAside'
 import { SearchFormProvider } from '@context/SearchFrorm'
+import HeaderMobile from '@molecules/HeaderMobile'
+import { MobileMenuProvider } from '@context/MobileMenu'
 import GlobalStyles, { Main, Wrapper } from '../styles/global/global'
 
 export default function MyApp({
@@ -18,7 +20,10 @@ export default function MyApp({
       <Theme>
         <SearchFormProvider>
           <Wrapper>
-            <LeftAside />
+            <MobileMenuProvider>
+              <HeaderMobile />
+              <LeftAside />
+            </MobileMenuProvider>
             <Main>
               <Component {...pageProps} key={router.route} />
             </Main>

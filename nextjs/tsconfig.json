@@ -20,6 +20,7 @@
       "@organisms/*": ["./src/components/organisms/*"],
       "@globalStyles/*": ["./src/styles/global/*"],
       "@svg/*": ["./src/svg/*"],
+      "@img/*": ["./src/img/*"],
       "@api/*": ["./src/api/*"],
       "@models/*": ["./src/models/*"],
       "@screens/*": ["./src/screens/*"],

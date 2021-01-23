@@ -1,5 +1,5 @@
-import Theme from '@atoms/Theme'
 import styled from 'styled-components'
+import { minDevice, maxDevice } from '@globalStyles/device'
 
 export const Container = styled.div`
   box-sizing: border-box;
@@ -23,6 +23,11 @@ export const Container = styled.div`
     opacity: 1;
     transform: translateY(0%);
     visibility: visible;
+  }
+
+  @media ${maxDevice.laptop} {
+    width: 100%;
+    padding: 20px;
   }
 `
 

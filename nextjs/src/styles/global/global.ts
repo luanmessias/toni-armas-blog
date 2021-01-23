@@ -57,6 +57,10 @@ export const Main = styled.main`
   padding: 15px;
   margin-left: ${({ theme }) => theme.l_aside_width};
   margin-right: ${({ theme }) => theme.r_aside_width};
+
+  @media ${maxDevice.laptop} {
+    margin: 0px;
+  }
 `
 
 export const Wrapper = styled(motion.div)`
@@ -66,6 +70,9 @@ export const Wrapper = styled(motion.div)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  @media ${maxDevice.laptop} {
+    flex-direction: column;
+  }
 `
 
 export default GlobalStyle

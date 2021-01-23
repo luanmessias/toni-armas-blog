@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { minDevice, maxDevice } from '@globalStyles/device'
 
-export const Container = styled.aside<any>`
+export const Container = styled.aside`
   box-sizing: border-box;
   border-left: 1px solid ${({ theme }) => theme.border_color};
   background: ${({ theme }) => theme.bg_dark};
@@ -24,6 +25,28 @@ export const Container = styled.aside<any>`
           * {
             fill: ${({ theme }) => theme.color_orange_medium};
           }
+        }
+      }
+    }
+  }
+
+  @media ${maxDevice.laptop} {
+    flex-direction: row;
+    width: 100%;
+    height: 60px;
+    bottom: 0;
+    top: inherit;
+    border-left: none;
+    border-top: 1px solid ${({ theme }) => theme.border_color};
+    > div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      width: 50%;
+      > div {
+        svg {
+          width: 25px;
+          height: 25px;
         }
       }
     }
