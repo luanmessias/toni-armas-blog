@@ -9,29 +9,29 @@ const SocialLinks: React.FC = () => {
   return (
     <Container>
       <SocialItem>
-        <SocialLink href="#">
-          <a target="_blank">
+        <SocialLink href="https://www.instagram.com/canaltoniarmas/?hl=en">
+          <a rel="noreferrer" target="_blank">
             <InstagramSVG />
           </a>
         </SocialLink>
       </SocialItem>
       <SocialItem>
-        <SocialLink href="#">
-          <a target="_blank">
+        <SocialLink href="https://www.youtube.com/c/TONIARMAS">
+          <a rel="noreferrer" target="_blank">
             <YoutubeSVG />
           </a>
         </SocialLink>
       </SocialItem>
-      <SocialItem>
+      {/* <SocialItem>
         <SocialLink href="#">
           <a target="_blank">
             <TwitterSVG />
           </a>
         </SocialLink>
-      </SocialItem>
+      </SocialItem> */}
       <SocialItem>
-        <SocialLink href="#">
-          <a target="_blank">
+        <SocialLink href="https://www.facebook.com/INSTRUTORTONIARMAS/">
+          <a rel="noreferrer" target="_blank">
             <FacebookSVG />
           </a>
         </SocialLink>
