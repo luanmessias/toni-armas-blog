@@ -1,3 +1,19 @@
+export interface theme {
+  color_orange_light: string
+  color_orange_medium: string
+  color_orange_dark: string
+  l_aside_width: string
+  r_aside_width: string
+  bg_body: string
+  bg_dark: string
+  bg_light: string
+  border_color: string
+  txt_color_base: string
+  txt_color_dark: string
+  txt_color_mid: string
+  txt_color_light: string
+}
+
 export const defaultTheme = {
   color_orange_light: '#ff7b29',
   color_orange_medium: '#FF6000',
