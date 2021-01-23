@@ -36,25 +36,31 @@ const MainMenu: React.FC = () => {
         <MenuItem data-active={isHomePage}>
           <HomeIconSVG />
           <Link href="/">
-            <a>Home</a>
+            <a href="/">Home</a>
           </Link>
         </MenuItem>
         <MenuItem data-active={isWhoWeAre}>
           <PersonSVG />
           <Link href="quem-somos">
-            <a>Quem Somos</a>
+            <a href="quem-somos">Quem Somos</a>
           </Link>
         </MenuItem>
         <MenuItem>
           <TargetSVG />
           <Link href="/">
-            <a>Curso de Tiro</a>
+            <a href="/">Curso de Tiro</a>
           </Link>
         </MenuItem>
         <MenuItem>
           <CartSVG />
           <Link href="https://www.lojatoniarmas.com.br/">
-            <a target="_blank">Nossa loja</a>
+            <a
+              href="https://www.lojatoniarmas.com.br/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Nossa loja
+            </a>
           </Link>
         </MenuItem>
       </Container>
