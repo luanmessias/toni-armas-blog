@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blog_posts",
+  "info": {
+    "name": "Blog Posts",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Titulo": {
+      "type": "string",
+      "default": "Titulo da postagem",
+      "required": true
+    },
+    "descricao": {
+      "type": "richtext",
+      "required": true
+    },
+    "youtube_video_url": {
+      "type": "string",
+      "required": false
+    },
+    "foto": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}
