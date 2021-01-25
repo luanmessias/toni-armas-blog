@@ -1,6 +1,15 @@
 import React from 'react'
 
-const YoutubeSVG: React.FC = props => (
+type SvgPropTypes = {
+  props: {
+    width: number
+    height: string
+    viewBox: string
+    fill: string
+  }
+}
+
+const YoutubeSVG = ({ props }: SvgPropTypes): JSX.Element => (
   <svg width={28} height={32} viewBox="0 0 28 32" fill="none" {...props}>
     <path
       fillRule="evenodd"

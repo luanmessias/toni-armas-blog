@@ -1,6 +1,15 @@
 import React from 'react'
 
-const TargetSVG: React.FC = props => (
+type SvgPropTypes = {
+  props: {
+    width: number
+    height: string
+    viewBox: string
+    fill: string
+  }
+}
+
+const TargetSVG = ({ props }: SvgPropTypes): JSX.Element => (
   <svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
     <path
       fillRule="evenodd"

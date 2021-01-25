@@ -5,7 +5,7 @@ import HomeButton from '@atoms/HomeButton'
 import SearchButton from '@atoms/SearchButton'
 import { Container } from './styles'
 
-const RightAside: React.FC = () => {
+const RightAside = (): JSX.Element => {
   return (
     <>
       <Container>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const QuemSomos: React.FC = () => {
+const QuemSomos = (): JSX.Element => {
   return <div />
 }
 

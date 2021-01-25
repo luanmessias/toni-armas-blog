@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { minDevice, maxDevice } from '@globalStyles/device'
+import { maxDevice } from '@globalStyles/device'
 
 export const Container = styled.ul`
   box-sizing: border-box;

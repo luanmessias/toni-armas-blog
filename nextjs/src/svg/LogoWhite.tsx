@@ -1,6 +1,15 @@
 import React from 'react'
 
-const LogoWhite = props => (
+type SvgPropTypes = {
+  props: {
+    width: number
+    height: string
+    viewBox: string
+    fill: string
+  }
+}
+
+const LogoWhite = ({ props }: SvgPropTypes): JSX.Element => (
   <svg width={136} height={64} viewBox="0 0 136 64" fill="none" {...props}>
     <path
       d="M19.1074 9.68246H116.893L116.855 43.6301H19.0696L19.1074 9.68246Z"

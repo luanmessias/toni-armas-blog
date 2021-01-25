@@ -1,9 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useDarkModeContext } from '@context/DarkMode'
 import { ThemeProvider } from 'styled-components'
 import { lightTheme, darkTheme } from './styles'
 
-interface ThemeType {
+type ChildrenProps = {
+  children: React.ReactNode
+}
+
+type ThemeType = {
   bg_body: string
   bg_dark: string
   bg_light: string
@@ -12,7 +16,7 @@ interface ThemeType {
   txt_color_light: string
 }
 
-const Theme: React.FC = ({ children }): JSX.Element => {
+const Theme = ({ children }: ChildrenProps): JSX.Element => {
   const { darkMode } = useDarkModeContext()
 
   const setTheme = (): ThemeType => {

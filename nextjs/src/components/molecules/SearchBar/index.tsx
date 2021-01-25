@@ -2,7 +2,7 @@ import React from 'react'
 import { useSearchFormContext } from '@context/SearchFrorm'
 import { Container, SearchTitle, SearchInput } from './styles'
 
-const SearchBar: React.FC = () => {
+const SearchBar = (): JSX.Element => {
   const { searchForm } = useSearchFormContext()
 
   return (

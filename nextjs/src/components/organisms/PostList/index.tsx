@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client'
 import { Container } from './styles'
 import QUERY_COUNTRIES from './query.graphql'
 
-const PostList: React.FC = () => {
+const PostList = (): JSX.Element => {
   const { data, loading, error } = useQuery(QUERY_COUNTRIES)
 
   if (loading) {

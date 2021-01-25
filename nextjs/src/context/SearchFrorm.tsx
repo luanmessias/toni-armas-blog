@@ -1,9 +1,18 @@
 import React, { createContext, useState, useContext } from 'react'
 import SearchBar from '@molecules/SearchBar'
 
-const SearchFormContext = createContext({})
+type ChildrenPropTtypes = {
+  children: React.ReactNode
+}
 
-const SearchFormProvider = ({ children }): JSX.Element => {
+type ContextType = {
+  searchForm: boolean
+  setSearchForm: (darkMode: boolean) => void
+}
+
+const SearchFormContext = createContext<ContextType | null>(null)
+
+const SearchFormProvider = ({ children }: ChildrenPropTtypes): JSX.Element => {
   const [searchForm, setSearchForm] = useState(false)
 
   return (
@@ -16,7 +25,7 @@ const SearchFormProvider = ({ children }): JSX.Element => {
   )
 }
 
-const useSearchFormContext = (): any => {
+const useSearchFormContext = (): ContextType => {
   const context = useContext(SearchFormContext)
   if (!context)
     throw new Error('useSearchForm must be used within a SearchFormProviders')

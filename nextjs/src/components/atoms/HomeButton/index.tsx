@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Container } from './styles'
 
-const HomeButton: React.FC = () => {
+const HomeButton = (): JSX.Element => {
   const [isHomePage, setIsHomePage] = useState(false)
   const router = useRouter()
 
@@ -20,7 +20,7 @@ const HomeButton: React.FC = () => {
     <>
       <Container data-active={isHomePage}>
         <Link href="/">
-          <a aria-label="Botao Home">
+          <a href="/" aria-label="Botao Home">
             <HomeIconSVG />
           </a>
         </Link>

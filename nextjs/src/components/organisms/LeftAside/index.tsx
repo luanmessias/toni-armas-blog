@@ -5,7 +5,7 @@ import SocialLinks from '@molecules/SocialLinks'
 import { useMobileMenuContext } from '@context/MobileMenu'
 import { Container } from './styles'
 
-const LeftAside: React.FC = () => {
+const LeftAside = (): JSX.Element => {
   const { mobileMenu } = useMobileMenuContext()
 
   return (

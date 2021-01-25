@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDarkModeContext } from '@context/DarkMode'
 import { Container } from './styles'
 import LampOffSVG from '../../../svg/LampOff'
 import LampOnSVG from '../../../svg/LampOn'
 
-const ToggleThemeLamp: React.FC = (): JSX.Element => {
+const ToggleThemeLamp = (): JSX.Element => {
   const [svgActive, setSvgActive] = useState(false)
   const { darkMode, setDarkMode } = useDarkModeContext()
 

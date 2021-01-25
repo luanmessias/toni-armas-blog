@@ -1,12 +1,25 @@
-import styled, {
-  createGlobalStyle,
-  GlobalStyleComponent,
-  keyframes
-} from 'styled-components'
-import { motion } from 'framer-motion'
-import { minDevice, maxDevice } from './device'
+import styled, { createGlobalStyle } from 'styled-components'
+import { maxDevice } from './device'
 
-const GlobalStyle = createGlobalStyle<any>`
+type themePropTypes = {
+  theme: {
+    color_orange_light: string
+    color_orange_medium: string
+    color_orange_dark: string
+    l_aside_width: string
+    r_aside_width: string
+    bg_body: string
+    bg_dark: string
+    bg_light: string
+    border_color: string
+    txt_color_base: string
+    txt_color_dark: string
+    txt_color_mid: string
+    txt_color_light: string
+  }
+}
+
+const GlobalStyle = createGlobalStyle`
 * {
   margin: 0;
   padding: 0;
@@ -15,8 +28,8 @@ const GlobalStyle = createGlobalStyle<any>`
 
 body {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
-  background: ${({ theme }) => theme.bg_body};
-  color: ${({ theme }) => theme.txt_color_base};
+  background: ${({ theme }: themePropTypes) => theme.bg_body};
+  color: ${({ theme }: themePropTypes) => theme.txt_color_base};
 
   overflow-x: hidden;
 

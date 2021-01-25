@@ -1,8 +1,17 @@
 import React, { createContext, useState, useContext } from 'react'
 
-const MobileMenuContext = createContext({})
+type ChildrenPropTtypes = {
+  children: React.ReactNode
+}
 
-const MobileMenuProvider = ({ children }): JSX.Element => {
+type ContextType = {
+  mobileMenu: boolean
+  setMobileMenu: (darkMode: boolean) => void
+}
+
+const MobileMenuContext = createContext<ContextType | null>(null)
+
+const MobileMenuProvider = ({ children }: ChildrenPropTtypes): JSX.Element => {
   const [mobileMenu, setMobileMenu] = useState(false)
 
   return (
@@ -14,7 +23,7 @@ const MobileMenuProvider = ({ children }): JSX.Element => {
   )
 }
 
-const useMobileMenuContext = (): any => {
+const useMobileMenuContext = (): ContextType => {
   const context = useContext(MobileMenuContext)
   if (!context)
     throw new Error('useMobileMenu must be used within a MobileMenuProviders')

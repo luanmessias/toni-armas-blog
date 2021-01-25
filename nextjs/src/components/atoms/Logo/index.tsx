@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDarkModeContext } from '@context/DarkMode'
 import LogoBlack from '@svg/LogoBlack'
 import LogoWhite from '@svg/LogoWhite'
 import Link from 'next/link'
 import { Container } from './styles'
 
-const Logo: React.FC = () => {
+const Logo = (): JSX.Element => {
   const { darkMode } = useDarkModeContext()
 
   const checkThemeLamp = (): JSX.Element => {
@@ -18,7 +18,7 @@ const Logo: React.FC = () => {
   return (
     <>
       <Link href="/">
-        <a aria-label="Logo Toni Armas">
+        <a href="/" aria-label="Logo Toni Armas">
           <Container>{checkThemeLamp()}</Container>
         </a>
       </Link>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Contact: React.FC = () => {
+const Contact = (): JSX.Element => {
   return (
     <>
       <h1>CONTACT</h1>

@@ -1,6 +1,15 @@
 import React from 'react'
 
-const HomeIconSVG: React.FC = props => (
+type SvgPropTypes = {
+  props: {
+    width: number
+    height: string
+    viewBox: string
+    fill: string
+  }
+}
+
+const HomeIconSVG = ({ props }: SvgPropTypes): JSX.Element => (
   <svg width={20} height={18} viewBox="0 0 20 18" fill="none" {...props}>
     <path
       fillRule="evenodd"
