@@ -63,16 +63,4 @@ export const Main = styled.main`
   }
 `
 
-export const Wrapper = styled(motion.div)`
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  @media ${maxDevice.laptop} {
-    flex-direction: column;
-  }
-`
-
 export default GlobalStyle

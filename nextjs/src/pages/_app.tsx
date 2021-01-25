@@ -9,7 +9,8 @@ import { SearchFormProvider } from '@context/SearchFrorm'
 import HeaderMobile from '@molecules/HeaderMobile'
 import { MobileMenuProvider } from '@context/MobileMenu'
 import HeadApp from '@organisms/HeadApp'
-import GlobalStyles, { Main, Wrapper } from '../styles/global/global'
+import ApolloWrapper from '@atoms/ApolloWrapper'
+import GlobalStyles, { Main } from '../styles/global/global'
 
 export default function MyApp({
   Component,
@@ -22,7 +23,7 @@ export default function MyApp({
       <DarkModeProvider>
         <Theme>
           <SearchFormProvider>
-            <Wrapper>
+            <ApolloWrapper>
               <MobileMenuProvider>
                 <HeaderMobile />
                 <LeftAside />
@@ -31,7 +32,7 @@ export default function MyApp({
                 <Component {...pageProps} key={router.route} />
               </Main>
               <RightAside />
-            </Wrapper>
+            </ApolloWrapper>
           </SearchFormProvider>
           <GlobalNormalize />
           <GlobalStyles />

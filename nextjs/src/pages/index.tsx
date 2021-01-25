@@ -1,8 +1,10 @@
 import React from 'react'
+import PostList from '@organisms/PostList'
 
 const Home: React.FC = () => {
   return (
     <>
+      <PostList />
       <div>
         <h1>Title</h1>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error aliquam
