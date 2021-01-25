@@ -9,7 +9,7 @@ type SvgPropTypes = {
   }
 }
 
-const YoutubeSVG = ({ props }: SvgPropTypes): JSX.Element => (
+const YoutubeSVG = (props: SvgPropTypes | any): JSX.Element => (
   <svg width={28} height={32} viewBox="0 0 28 32" fill="none" {...props}>
     <path
       fillRule="evenodd"

@@ -9,7 +9,7 @@ type SvgPropTypes = {
   }
 }
 
-const SearchSVG = ({ props }: SvgPropTypes): JSX.Element => (
+const SearchSVG = (props: SvgPropTypes | any): JSX.Element => (
   <svg width={18} height={18} viewBox="0 0 18 18" fill="none" {...props}>
     <path
       fillRule="evenodd"

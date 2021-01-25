@@ -9,7 +9,7 @@ type SvgPropTypes = {
   }
 }
 
-const PersonSVG = ({ props }: SvgPropTypes): JSX.Element => (
+const PersonSVG = (props: SvgPropTypes | any): JSX.Element => (
   <svg width={20} height={14} viewBox="0 0 20 14" fill="none" {...props}>
     <path
       fillRule="evenodd"
