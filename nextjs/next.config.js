@@ -1,14 +1,11 @@
-const withReactSvg = require('next-react-svg')
 const withPWA = require('next-pwa')
 
-const path = require('path')
-
-module.exports = withReactSvg({
-  include: path.resolve(__dirname, './public/svg'),
-  webpack(config, options) {
-    return config
+module.exports = {
+  env: {
+    graphql_api_url: 'https://localhost:1337/graphql',
   }
-});
+}
+
 
 module.exports = withPWA({
   pwa: {
@@ -16,16 +13,10 @@ module.exports = withPWA({
   }
 });
 
+
+
 module.exports = {
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.(graphql|gql)$/,
-      exclude: /node_modules/,
-      loader: 'graphql-tag/loader',
-    });
-    return config;
-  },
-  webpackDevMiddleware: (config) => {
-    return config;
-  },
+  images: {
+    domains: ["localhost"],
+  }
 };

@@ -1,6 +1,10 @@
 import styled, { createGlobalStyle } from 'styled-components'
 import { maxDevice } from './device'
 
+const config = {
+  animTime: '.3s'
+}
+
 type themePropTypes = {
   theme: {
     color_orange_light: string
@@ -23,7 +27,16 @@ const GlobalStyle = createGlobalStyle`
 * {
   margin: 0;
   padding: 0;
-  transition: all .3s;
+  transition:
+    background-color ${config.animTime},
+    transform ${config.animTime},
+    visibility ${config.animTime},
+    left ${config.animTime},
+    top ${config.animTime},
+    right ${config.animTime},
+    bottom ${config.animTime},
+    opacity ${config.animTime};
+
 }
 
 body {

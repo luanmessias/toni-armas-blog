@@ -44,7 +44,7 @@ export const MenuItem = styled.li`
 
   a {
     font-family: 'Titillium Web', sans-serif;
-    font-weight: 900;
+    font-weight: 600;
     text-transform: uppercase;
     text-decoration: none;
     font-size: 20px;

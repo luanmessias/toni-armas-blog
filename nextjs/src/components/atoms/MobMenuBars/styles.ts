@@ -11,7 +11,7 @@ export const Circle = styled.div`
   top: 25px;
   width: 40px;
   height: 40px;
-  z-index: 999;
+  z-index: 9999;
 `
 
 export const TopBar = styled.div`

@@ -12,6 +12,7 @@ export const Container = styled.div`
   padding: 20px;
   padding-left: calc(${({ theme }) => theme.l_aside_width} + 20px);
   padding-right: calc(${({ theme }) => theme.r_aside_width} + 20px);
+  z-index: 1;
 
   &[data-active='false'] {
     opacity: 0;

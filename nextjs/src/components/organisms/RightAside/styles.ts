@@ -14,6 +14,7 @@ export const Container = styled.aside`
   width: ${({ theme }) => theme.r_aside_width};
   top: 0;
   right: 0;
+  z-index: 999;
   > div {
     > div {
       padding: 20px;

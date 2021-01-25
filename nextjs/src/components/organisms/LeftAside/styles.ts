@@ -16,6 +16,7 @@ export const Container = styled.aside`
   top: 0;
   left: 0;
   visibility: visible;
+  z-index: 999;
 
   @media ${maxDevice.laptop} {
     visibility: hidden;
