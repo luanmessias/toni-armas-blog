@@ -21,11 +21,16 @@ export async function getStaticProps() {
 }
 
 const Home = ({ postListProps }) => {
-  const postListRender = postListProps.map(
-    ({ id, data, titulo, descricao, foto }) => {
+  const postListFilter = postListProps.filter(({ status }) => {
+    return status === 'ativo'
+  })
+
+  const postListRender = postListFilter.map(
+    ({ id, data, titulo, descricao, foto, video }) => {
       return (
         <PosCard
           key={id}
+          youtubeUrl={video}
           photoUrl={foto}
           postDate={data}
           postTitle={titulo}

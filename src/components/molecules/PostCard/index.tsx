@@ -1,6 +1,7 @@
 import React from 'react'
 import convertDate from '@utils/convertDate'
 import cutString from '@utils/cutString'
+import ytPhotoExtract from '@utils/ytPhotoExtract'
 import Link from 'next/link'
 import {
   Container,
@@ -16,20 +17,26 @@ type PostCardProps = {
   postDate: string
   postTitle: string
   postSmallDesc: string
+  youtubeUrl: string
 }
 
 const PostCard = ({
   photoUrl,
   postDate,
   postTitle,
-  postSmallDesc
+  postSmallDesc,
+  youtubeUrl
 }: PostCardProps): JSX.Element => {
   const formattedDate = convertDate(postDate)
-  const trimmedTitle = cutString(postTitle, 15)
-  const trimmedDesc = cutString(postSmallDesc, 15)
+  const trimmedTitle = cutString(postTitle, 80)
+  const trimmedDesc = cutString(postSmallDesc, 80)
 
-  const checkPhoto = foto => {
-    if (!foto) {
+  const checkPhoto = (foto, video) => {
+    if (video) {
+      return ytPhotoExtract(youtubeUrl, 1)
+    }
+
+    if (!foto && !video) {
       return '/img/bg_top_mob.jpg'
     } else {
       const { url } = foto[0]
@@ -41,7 +48,9 @@ const PostCard = ({
     <>
       <Container>
         <CircleMask
-          style={{ backgroundImage: `url(${checkPhoto(photoUrl)})` }}
+          style={{
+            backgroundImage: `url(${checkPhoto(photoUrl, youtubeUrl)})`
+          }}
         />
         <PostDate>{`${formattedDate}`}</PostDate>
         <Title>{trimmedTitle}</Title>

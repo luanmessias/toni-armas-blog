@@ -40,9 +40,7 @@ export const PostDate = styled.div`
 
 export const Title = styled.h2`
   font-family: 'Titillium Web', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   font-size: 24px;
   margin-bottom: 10px;
   text-align: center;
@@ -59,11 +57,13 @@ export const SmallDesc = styled.div`
   font-size: 14px;
   text-align: center;
   max-width: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   height: auto;
   min-height: 35px;
+  text-transform: lowercase;
+  &:first-letter {
+    text-transform: uppercase;
+  }
 `
 export const ReadPostLink = styled.a`
   margin: 10px 0px;

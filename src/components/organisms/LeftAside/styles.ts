@@ -32,6 +32,7 @@ export const Container = styled.aside`
     background-color: ${({ theme }) => theme.bg_mobmenu};
     overflow: hidden;
     right: -100%;
+    box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.2);
   }
 
   &[data-active='true'] {

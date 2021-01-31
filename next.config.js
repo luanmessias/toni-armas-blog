@@ -10,7 +10,7 @@ module.exports = withPWA({
 
 module.exports = {
   env: {
-    notion_table_posts: 'https://notion-api.splitbee.io/v1/table/56e15fc6a74f4ca7b44bae84601996f9',
+    notion_table_posts: 'https://notion-api.splitbee.io/v1/table/83890134f1c042ff9cdf3500bfb3005e',
     notion_post_page: ''
 
   },

@@ -1,8 +1,8 @@
-const cutString = (str, maxLength) => {
+const cutString = (str: string, maxLength: number): string => {
   if (str.length <= maxLength) {
     return str
   } else {
-    return `${str.substr(0, Math.min(str.length, str.lastIndexOf(' ')))}...`
+    return `${str.substr(0, Math.min(maxLength, str.lastIndexOf(' ')))}...`
   }
 }
 
