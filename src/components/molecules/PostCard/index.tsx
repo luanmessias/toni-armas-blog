@@ -1,6 +1,6 @@
 import React from 'react'
 import convertDate from '@utils/convertDate'
-import readingTime from '@utils/readingTime'
+import cutString from '@utils/cutString'
 import Link from 'next/link'
 import {
   Container,
@@ -12,31 +12,40 @@ import {
 } from './styles'
 
 type PostCardProps = {
-  photo_url: string
-  post_date: string
-  post_title: string
-  post_small_desc: string
-  post_full_desc: string
+  photoUrl: string
+  postDate: string
+  postTitle: string
+  postSmallDesc: string
 }
 
 const PostCard = ({
-  photo_url,
-  post_date,
-  post_title,
-  post_small_desc,
-  post_full_desc
+  photoUrl,
+  postDate,
+  postTitle,
+  postSmallDesc
 }: PostCardProps): JSX.Element => {
-  const formattedDate = convertDate(post_date)
+  const formattedDate = convertDate(postDate)
+  const trimmedTitle = cutString(postTitle, 15)
+  const trimmedDesc = cutString(postSmallDesc, 15)
 
-  const timetoRead = readingTime(post_full_desc)
+  const checkPhoto = foto => {
+    if (!foto) {
+      return '/img/bg_top_mob.jpg'
+    } else {
+      const { url } = foto[0]
+      return url
+    }
+  }
 
   return (
     <>
       <Container>
-        <CircleMask style={{ backgroundImage: `url(${photo_url})` }} />
-        <PostDate>{`${formattedDate} | ${timetoRead}`}</PostDate>
-        <Title>{post_title}</Title>
-        <SmallDesc>{post_small_desc}</SmallDesc>
+        <CircleMask
+          style={{ backgroundImage: `url(${checkPhoto(photoUrl)})` }}
+        />
+        <PostDate>{`${formattedDate}`}</PostDate>
+        <Title>{trimmedTitle}</Title>
+        <SmallDesc>{trimmedDesc}</SmallDesc>
         <Link href="/">
           <ReadPostLink href="/">LER POSTAGEM</ReadPostLink>
         </Link>

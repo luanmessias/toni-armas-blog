@@ -19,6 +19,7 @@
       "@molecules/*": ["./src/components/molecules/*"],
       "@organisms/*": ["./src/components/organisms/*"],
       "@globalStyles/*": ["./src/styles/global/*"],
+      "@pageStyles/*": ["./src/styles/pages/*"],
       "@svg/*": ["./src/svg/*"],
       "@img/*": ["./src/img/*"],
       "@api/*": ["./src/api/*"],

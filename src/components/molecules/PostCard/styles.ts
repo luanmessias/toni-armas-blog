@@ -5,7 +5,7 @@ export const Container = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   background-color: ${({ theme }) => theme.bg_dark};
   padding: 25px;
@@ -40,9 +40,18 @@ export const PostDate = styled.div`
 
 export const Title = styled.h2`
   font-family: 'Titillium Web', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 24px;
   margin-bottom: 10px;
   text-align: center;
+  height: auto;
+  min-height: 55px;
+  text-transform: lowercase;
+  &:first-letter {
+    text-transform: uppercase;
+  }
 `
 
 export const SmallDesc = styled.div`
@@ -50,6 +59,11 @@ export const SmallDesc = styled.div`
   font-size: 14px;
   text-align: center;
   max-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  min-height: 35px;
 `
 export const ReadPostLink = styled.a`
   margin: 10px 0px;

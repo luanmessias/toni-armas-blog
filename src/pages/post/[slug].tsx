@@ -6,10 +6,8 @@ import { NotionRenderer } from "react-notion";
 
 export async function getStaticProps() {
   const data = await fetch(
-    "https://notion-api.splitbee.io/v1/page/4247d23bf42242449c0c3d972893d7c1"
+    `https://notion-api.splitbee.io/v1/page/${slug}`
   ).then(res => res.json());
-
-
 
   return {
     props: {
@@ -26,6 +24,13 @@ const QuemSomos = ({blockMap}): JSX.Element => {
       <NotionRenderer blockMap={blockMap} />
     </>
   )
+}
+
+export const getStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: false
+  }
 }
 
 export default QuemSomos
