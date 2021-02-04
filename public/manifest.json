@@ -2,7 +2,7 @@
   "short_name": "toniarmas",
   "name": "Toni Armas",
   "lang": "pt",
-  "start_url": "https://toni-armas-blog-h8jb3o4ao.vercel.app/",
+  "start_url": "https://toni-armas-blog.vercel.app/",
   "background_color": "#272727",
   "theme_color": "#ff6000",
   "dir": "auto",
@@ -75,5 +75,5 @@
       "sizes": "16x16"
     }
   ],
-  "prefer_related_applications": "false"
+  "prefer_related_applications": false
 }
