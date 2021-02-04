@@ -3,6 +3,7 @@ import ToggleThemeLamp from '@atoms/ToggleThemeLamp'
 import ArrowUp from '@atoms/ArrowUp'
 import HomeButton from '@atoms/HomeButton'
 import SearchButton from '@atoms/SearchButton'
+import ShoppingButton from '@atoms/ShoppingButton'
 import { Container } from './styles'
 
 const RightAside = (): React.ReactElement => {
@@ -12,6 +13,7 @@ const RightAside = (): React.ReactElement => {
         <div>
           <HomeButton />
           <SearchButton />
+          <ShoppingButton />
         </div>
         <div>
           <ToggleThemeLamp />
