@@ -1,33 +1,46 @@
 import React from 'react'
-import { useRouter } from 'next/router'
-import 'react-notion/src/styles.css'
+
 import 'prismjs/themes/prism-tomorrow.css'
 
 import { NotionRenderer } from 'react-notion'
 
-const PostPage = ({ blockMap }) => {
+const PostPage = ({ postTitle, postContent }) => {
+  console.log(postTitle)
   return (
     <>
-      <NotionRenderer blockMap={blockMap} />
+      {postTitle.titulo}
+      <NotionRenderer blockMap={postContent} />
     </>
   )
 }
 
 export async function getStaticProps(paths) {
   const { slug } = paths.params
-  const data = await fetch(`${process.env.notion_post_page}${slug}`).then(res =>
+
+  // Get post data
+  const dataPost = await fetch(
+    `${process.env.notion_post_page}${slug}`
+  ).then(res => res.json())
+
+  // Get table data
+  const dataTable = await fetch(process.env.notion_table_posts).then(res =>
     res.json()
   )
 
-  if (!data) {
+  if (!dataPost || !dataTable) {
     return {
       notFound: true
     }
   }
 
+  const dataTableFiltered = dataTable.find(({ id }) => {
+    return id === slug
+  })
+
   return {
     props: {
-      blockMap: data
+      postTitle: dataTableFiltered,
+      postContent: dataPost
     }
   }
 }
