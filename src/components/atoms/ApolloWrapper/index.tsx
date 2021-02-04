@@ -12,7 +12,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 })
 
-const ApolloWrapper = ({ children }: ChildrenProps): JSX.Element => {
+const ApolloWrapper = ({ children }: ChildrenProps): React.ReactElement => {
   return (
     <Container>
       <ApolloProvider client={client}>{children}</ApolloProvider>

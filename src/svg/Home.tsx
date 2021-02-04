@@ -9,7 +9,7 @@ type SvgPropTypes = {
   }
 }
 
-const HomeIconSVG = (props: SvgPropTypes | any): JSX.Element => (
+const HomeIconSVG = (props: SvgPropTypes | any): React.ReactElement => (
   <svg width={20} height={18} viewBox="0 0 20 18" fill="none" {...props}>
     <path
       fillRule="evenodd"

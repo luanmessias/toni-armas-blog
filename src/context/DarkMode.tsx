@@ -11,7 +11,7 @@ type ContextType = {
 
 const DarkModeContext = createContext<ContextType | null>(null)
 
-const DarkModeProvider = ({ children }: ChildrenPropTtypes): JSX.Element => {
+const DarkModeProvider = ({ children }: ChildrenPropTtypes): React.ReactElement => {
   const [darkMode, setDarkMode] = useState(true)
 
   return (

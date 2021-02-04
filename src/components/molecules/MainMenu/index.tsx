@@ -8,7 +8,7 @@ import CartSVG from '@svg/Cart'
 import { useMobileMenuContext } from '@context/MobileMenu'
 import { Container, MenuItem } from './styles'
 
-const MainMenu = (): JSX.Element => {
+const MainMenu = (): React.ReactElement => {
   const [isHomePage, setIsHomePage] = useState(false)
   const [isWhoWeAre, setIsWhoWeAre] = useState(false)
   const { setMobileMenu } = useMobileMenuContext()

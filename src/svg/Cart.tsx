@@ -9,7 +9,7 @@ type SvgPropTypes = {
   }
 }
 
-const CartSVG = (props: SvgPropTypes | any): JSX.Element => (
+const CartSVG = (props: SvgPropTypes | any): React.ReactElement => (
   <svg width={22} height={20} viewBox="0 0 22 20" fill="none" {...props}>
     <path
       fillRule="evenodd"

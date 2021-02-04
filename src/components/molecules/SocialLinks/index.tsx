@@ -4,7 +4,7 @@ import YoutubeSVG from '@svg/Youtube'
 import React from 'react'
 import { Container, SocialItem, SocialLink } from './styles'
 
-const SocialLinks = (): JSX.Element => {
+const SocialLinks = (): React.ReactElement => {
   return (
     <Container>
       <SocialItem>

@@ -15,7 +15,7 @@ export async function getStaticProps() {
     }
   }
 }
-const QuemSomos = ({ blockMap }): JSX.Element => {
+const QuemSomos = ({ blockMap }): React.ReactElement => {
   return (
     <>
       <NotionRenderer blockMap={blockMap} />

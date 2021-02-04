@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Container } from './styles'
 
-const HomeButton = (): JSX.Element => {
+const HomeButton = (): React.ReactElement => {
   const [isHomePage, setIsHomePage] = useState(false)
   const router = useRouter()
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { useMobileMenuContext } from '@context/MobileMenu'
 import { Container, Circle, TopBar, MidBar, BotBar } from './styles'
 
-const MobMenuBars = (): JSX.Element => {
+const MobMenuBars = (): React.ReactElement => {
   const { mobileMenu, setMobileMenu } = useMobileMenuContext()
 
   return (

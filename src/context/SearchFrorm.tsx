@@ -12,7 +12,7 @@ type ContextType = {
 
 const SearchFormContext = createContext<ContextType | null>(null)
 
-const SearchFormProvider = ({ children }: ChildrenPropTtypes): JSX.Element => {
+const SearchFormProvider = ({ children }: ChildrenPropTtypes): React.ReactElement => {
   const [searchForm, setSearchForm] = useState(false)
 
   return (

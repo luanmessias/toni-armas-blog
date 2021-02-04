@@ -15,7 +15,7 @@ export async function getStaticProps() {
     }
   }
 }
-const Contact = (blockMap): JSX.Element => {
+const Contact = (blockMap): React.ReactElement => {
   console.log(blockMap)
   return (
     <>

@@ -11,7 +11,7 @@ type ContextType = {
 
 const MobileMenuContext = createContext<ContextType | null>(null)
 
-const MobileMenuProvider = ({ children }: ChildrenPropTtypes): JSX.Element => {
+const MobileMenuProvider = ({ children }: ChildrenPropTtypes): React.ReactElement => {
   const [mobileMenu, setMobileMenu] = useState(false)
 
   return (

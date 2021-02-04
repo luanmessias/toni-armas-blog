@@ -2,7 +2,7 @@ import React from 'react'
 import ArrowUpSVG from 'src/svg/ArrowUp'
 import { Container } from './styles'
 
-const ArrowUp = (): JSX.Element => {
+const ArrowUp = (): React.ReactElement => {
   const scrollToTop = (): void => {
     const c = document.documentElement.scrollTop || document.body.scrollTop
 

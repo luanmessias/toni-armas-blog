@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 
-const HeadApp = (): JSX.Element => {
+const HeadApp = (): React.ReactElement => {
   return (
     <Head>
       <meta charSet="utf-8" />

@@ -28,7 +28,7 @@ const PostCard = ({
   postTitle,
   postSmallDesc,
   youtubeUrl
-}: PostCardProps): JSX.Element => {
+}: PostCardProps): React.ReactElement => {
   const formattedDate = convertDate(postDate)
   const trimmedTitle = cutString(postTitle, 80)
   const trimmedDesc = cutString(postSmallDesc, 80)

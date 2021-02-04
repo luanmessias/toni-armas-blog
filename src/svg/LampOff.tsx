@@ -9,7 +9,7 @@ type SvgPropTypes = {
   }
 }
 
-const lampOffSVG = (props: SvgPropTypes | any): JSX.Element => (
+const lampOffSVG = (props: SvgPropTypes | any): React.ReactElement => (
   <svg width={14} height={21} viewBox="0 0 14 21" fill="none" {...props}>
     <path
       fillRule="evenodd"

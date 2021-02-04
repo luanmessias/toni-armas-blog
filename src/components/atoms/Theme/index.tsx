@@ -16,7 +16,7 @@ type ThemeType = {
   txt_color_light: string
 }
 
-const Theme = ({ children }: ChildrenProps): JSX.Element => {
+const Theme = ({ children }: ChildrenProps): React.ReactElement => {
   const { darkMode } = useDarkModeContext()
 
   const setTheme = (): ThemeType => {

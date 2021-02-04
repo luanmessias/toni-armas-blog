@@ -5,10 +5,10 @@ import LogoWhite from '@svg/LogoWhite'
 import Link from 'next/link'
 import { Container } from './styles'
 
-const Logo = (): JSX.Element => {
+const Logo = (): React.ReactElement => {
   const { darkMode } = useDarkModeContext()
 
-  const checkThemeLamp = (): JSX.Element => {
+  const checkThemeLamp = (): React.ReactElement => {
     if (!darkMode) {
       return <LogoBlack />
     }
