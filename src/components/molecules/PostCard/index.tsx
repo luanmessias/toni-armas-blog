@@ -13,6 +13,7 @@ import {
 } from './styles'
 
 type PostCardProps = {
+  postId: string
   photoUrl: string
   postDate: string
   postTitle: string
@@ -21,6 +22,7 @@ type PostCardProps = {
 }
 
 const PostCard = ({
+  postId,
   photoUrl,
   postDate,
   postTitle,
@@ -55,8 +57,8 @@ const PostCard = ({
         <PostDate>{`${formattedDate}`}</PostDate>
         <Title>{trimmedTitle}</Title>
         <SmallDesc>{trimmedDesc}</SmallDesc>
-        <Link href="/">
-          <ReadPostLink href="/">LER POSTAGEM</ReadPostLink>
+        <Link href={`/post/${postId}`}>
+          <ReadPostLink href={`/post/${postId}`}>LER POSTAGEM</ReadPostLink>
         </Link>
       </Container>
     </>

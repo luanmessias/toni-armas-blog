@@ -26,10 +26,11 @@ const Home = ({ postListProps }) => {
   })
 
   const postListRender = postListFilter.map(
-    ({ id, data, titulo, descricao, foto, video }) => {
+    ({ id, data, titulo, descricao, foto, video }, index) => {
       return (
         <PosCard
-          key={id}
+          key={index}
+          postId={id}
           youtubeUrl={video}
           photoUrl={foto}
           postDate={data}

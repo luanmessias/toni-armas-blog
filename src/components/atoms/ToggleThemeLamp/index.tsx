@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { useDarkModeContext } from '@context/DarkMode'
+import LampOffSVG from '@svg/LampOff'
+import LampOnSVG from '@svg/LampOn'
 import { Container } from './styles'
-import LampOffSVG from '../../../svg/LampOff'
-import LampOnSVG from '../../../svg/LampOn'
 
-const ToggleThemeLamp = (): JSX.Element => {
+const ToggleThemeLamp = (): React.ReactElement => {
   const [svgActive, setSvgActive] = useState(false)
   const { darkMode, setDarkMode } = useDarkModeContext()
 
-  const checkThemeLamp = (): JSX.Element => {
+  const checkThemeLamp = (): React.ReactElement => {
     if (!svgActive) {
       return <LampOffSVG />
     }
