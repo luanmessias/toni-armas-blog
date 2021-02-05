@@ -11,7 +11,9 @@ type ContextType = {
 
 const MobileMenuContext = createContext<ContextType | null>(null)
 
-const MobileMenuProvider = ({ children }: ChildrenPropTtypes): React.ReactElement => {
+const MobileMenuProvider = ({
+  children
+}: ChildrenPropTtypes): React.ReactElement => {
   const [mobileMenu, setMobileMenu] = useState(false)
 
   return (
@@ -25,8 +27,9 @@ const MobileMenuProvider = ({ children }: ChildrenPropTtypes): React.ReactElemen
 
 const useMobileMenuContext = (): ContextType => {
   const context = useContext(MobileMenuContext)
-  if (!context)
+  if (!context) {
     throw new Error('useMobileMenu must be used within a MobileMenuProviders')
+  }
   return context
 }
 

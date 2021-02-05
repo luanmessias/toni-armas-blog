@@ -8,8 +8,8 @@ import LeftAside from '@organisms/LeftAside'
 import { SearchFormProvider } from '@context/SearchFrorm'
 import HeaderMobile from '@molecules/HeaderMobile'
 import { MobileMenuProvider } from '@context/MobileMenu'
+import { GetPostListProvider } from '@context/GetPostList'
 import HeadApp from '@organisms/HeadApp'
-import ApolloWrapper from '@atoms/ApolloWrapper'
 import GlobalStyles, { Main } from '../styles/global/global'
 
 export default function MyApp({
@@ -22,8 +22,8 @@ export default function MyApp({
       <HeadApp />
       <DarkModeProvider>
         <Theme>
-          <SearchFormProvider>
-            <ApolloWrapper>
+          <GetPostListProvider>
+            <SearchFormProvider>
               <MobileMenuProvider>
                 <HeaderMobile />
                 <LeftAside />
@@ -32,8 +32,8 @@ export default function MyApp({
                 <Component {...pageProps} key={router.route} />
               </Main>
               <RightAside />
-            </ApolloWrapper>
-          </SearchFormProvider>
+            </SearchFormProvider>
+          </GetPostListProvider>
           <GlobalNormalize />
           <GlobalStyles />
         </Theme>

@@ -5,6 +5,9 @@ const config = {
   animTime: '.3s'
 }
 
+const lAsideWidth = ({ theme }) => theme.l_aside_width
+const rAsideWidth = ({ theme }) => theme.r_aside_width
+
 type themePropTypes = {
   theme: {
     color_orange_light: string
@@ -37,15 +40,6 @@ const GlobalStyle = createGlobalStyle`
     bottom ${config.animTime},
     opacity ${config.animTime};
 
-}
-
-body {
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
-  background: ${({ theme }: themePropTypes) => theme.bg_body};
-  color: ${({ theme }: themePropTypes) => theme.txt_color_base};
-
-  overflow-x: hidden;
-
   /* width */
   ::-webkit-scrollbar {
     width: 3px;
@@ -68,6 +62,23 @@ body {
   }
 }
 
+body {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  background: ${({ theme }: themePropTypes) => theme.bg_body};
+  color: ${({ theme }: themePropTypes) => theme.txt_color_base};
+
+  a {
+    text-decoration: none;
+    * {
+      color: ${({ theme }: themePropTypes) => theme.txt_color_base};
+    }
+  }
+
+  overflow-x: hidden;
+
+
+}
+
 #__next {
   width: 100vw;
   height: 100vh;
@@ -77,15 +88,16 @@ body {
 export const Main = styled.main`
   box-sizing: border-box;
   height: 100%;
-  width: 100%;
+  width: calc(100% - (${lAsideWidth} + ${rAsideWidth}));
   display: flex;
   flex-direction: column;
   padding: 15px;
-  margin-left: ${({ theme }) => theme.l_aside_width};
-  margin-right: ${({ theme }) => theme.r_aside_width};
+  margin-left: ${lAsideWidth};
+  margin-right: ${rAsideWidth};
 
   @media ${maxDevice.laptop} {
     margin: 0px;
+    width: 100%;
   }
 `
 

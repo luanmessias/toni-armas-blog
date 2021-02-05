@@ -46,4 +46,21 @@ export const SearchInput = styled.input`
   box-sizing: border-box;
   border: 0px;
   background-color: ${({ theme }) => theme.bg_light};
+  color: ${({ theme }) => theme.txt_color_base};
+`
+
+export const SearchResultContainer = styled.div`
+  box-sizing: border-box;
+  max-height: 0px;
+  opacity: 0;
+  overflow-y: auto;
+  visibility: hidden;
+
+  &[data-active='true'] {
+    padding: 10px;
+    opacity: 1;
+    max-height: 300px;
+    visibility: visible;
+    margin-top: 20px;
+  }
 `

@@ -1,4 +1,5 @@
-import React, { createContext, useState, useContext } from 'react'
+import React, { createContext, useEffect, useState, useContext } from 'react'
+import Router from 'next/router'
 import SearchBar from '@molecules/SearchBar'
 
 type ChildrenPropTtypes = {
@@ -12,8 +13,14 @@ type ContextType = {
 
 const SearchFormContext = createContext<ContextType | null>(null)
 
-const SearchFormProvider = ({ children }: ChildrenPropTtypes): React.ReactElement => {
+const SearchFormProvider = ({
+  children
+}: ChildrenPropTtypes): React.ReactElement => {
   const [searchForm, setSearchForm] = useState(false)
+
+  useEffect(() => {
+    Router.events.on('routeChangeStart', setSearchForm(false))
+  }, [])
 
   return (
     <>
@@ -27,8 +34,10 @@ const SearchFormProvider = ({ children }: ChildrenPropTtypes): React.ReactElemen
 
 const useSearchFormContext = (): ContextType => {
   const context = useContext(SearchFormContext)
-  if (!context)
+  if (!context) {
     throw new Error('useSearchForm must be used within a SearchFormProviders')
+  }
+
   return context
 }
 
