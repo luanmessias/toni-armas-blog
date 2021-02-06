@@ -1,16 +1,26 @@
 import React from 'react'
-import { AppProps } from 'next/dist/next-server/lib/router/router'
-import Theme from '@atoms/Theme'
+import Router, { AppProps } from 'next/dist/next-server/lib/router/router'
+import NProgress from 'nprogress'
 import { DarkModeProvider } from '@context/DarkMode'
-import GlobalNormalize from '@globalStyles/normalize'
-import RightAside from '@organisms/RightAside'
-import LeftAside from '@organisms/LeftAside'
 import { SearchFormProvider } from '@context/SearchFrorm'
-import HeaderMobile from '@molecules/HeaderMobile'
 import { MobileMenuProvider } from '@context/MobileMenu'
 import { GetPostListProvider } from '@context/GetPostList'
+import Theme from '@atoms/Theme'
+import HeaderMobile from '@molecules/HeaderMobile'
+import RightAside from '@organisms/RightAside'
+import LeftAside from '@organisms/LeftAside'
 import HeadApp from '@organisms/HeadApp'
+import GlobalNormalize from '@globalStyles/normalize'
 import GlobalStyles, { Main } from '../styles/global/global'
+import { NProgressStyle } from '@globalStyles/nprogress'
+
+Router.events.on('routeChangeStart', url => {
+  console.log(`Loading: ${url}`)
+  NProgress.start()
+})
+
+Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeError', () => NProgress.done())
 
 export default function MyApp({
   Component,
@@ -36,6 +46,7 @@ export default function MyApp({
           </GetPostListProvider>
           <GlobalNormalize />
           <GlobalStyles />
+          <NProgressStyle />
         </Theme>
       </DarkModeProvider>
     </>
