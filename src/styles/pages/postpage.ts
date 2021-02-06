@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import { maxDevice } from '@globalStyles/device'
-export const Container = styled.div`
+
+export const Container = styled.div``
+
+export const PostContainer = styled.div`
   padding: 15px;
 
   .notion {

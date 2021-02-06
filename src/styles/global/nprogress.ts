@@ -10,7 +10,7 @@ export const NProgressStyle = createGlobalStyle`
   pointer-events: none;
   z-index: 9999999;
 
-  &:before {
+  &:after {
     content: '';
     position: fixed;
     width: 100%;
@@ -19,7 +19,7 @@ export const NProgressStyle = createGlobalStyle`
     top: 0;
     left: 0;
     opacity: .3;
-    z-index: 9999;
+    z-index: 999;
   }
 }
 
@@ -27,7 +27,7 @@ export const NProgressStyle = createGlobalStyle`
   background: ${colorOrangeMedium};
 
   position: fixed;
-  z-index: 1031;
+  z-index: 999999;
   top: 0;
   left: 0;
 
@@ -42,7 +42,7 @@ export const NProgressStyle = createGlobalStyle`
   right: 0px;
   width: 100px;
   height: 100%;
-  box-shadow: 0 0 10px ${colorOrangeDark}, 0 0 5px ${colorOrangeDark};
+  box-shadow: 0 0 10px ${colorOrangeMedium}, 0 0 5px ${colorOrangeMedium};
   opacity: 1.0;
 
   -webkit-transform: rotate(3deg) translate(0px, -4px);

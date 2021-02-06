@@ -11,7 +11,8 @@ import {
   PostHeaderContent,
   PostDate,
   PostTitle,
-  PostDesc
+  PostDesc,
+  PostContainer
 } from '@pageStyles/postpage'
 import ArrowReturn from '@atoms/ArrowReturn'
 
@@ -21,7 +22,7 @@ const PostPage = ({ postTitle, postContent }) => {
   const bgImage = checkPhoto(foto, video)
 
   return (
-    <>
+    <Container>
       <PostHeder
         style={{
           backgroundImage: `url(${bgImage})`
@@ -35,10 +36,10 @@ const PostPage = ({ postTitle, postContent }) => {
         </PostHeaderContent>
       </PostHeder>
 
-      <Container>
+      <PostContainer>
         <NotionRenderer blockMap={postContent} />
-      </Container>
-    </>
+      </PostContainer>
+    </Container>
   )
 }
 
