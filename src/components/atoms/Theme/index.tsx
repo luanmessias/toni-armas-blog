@@ -7,19 +7,10 @@ type ChildrenProps = {
   children: React.ReactNode
 }
 
-type ThemeType = {
-  bgBody: string
-  bgDark: string
-  bgLight: string
-  txtColorDark: string
-  txtColorMid: string
-  txtColorLight: string
-}
-
 const Theme = ({ children }: ChildrenProps): React.ReactElement => {
   const { darkMode } = useDarkModeContext()
 
-  const setTheme = (): ThemeType => {
+  const setTheme = () => {
     if (darkMode) {
       return darkTheme
     }
