@@ -81,13 +81,13 @@ body {
 
 body {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
-  background: ${({ theme }: themePropTypes) => theme.bg_body};
-  color: ${({ theme }: themePropTypes) => theme.txt_color_base};
+  background: ${({ theme }: themePropTypes) => theme.bgBody};
+  color: ${({ theme }: themePropTypes) => theme.txtColorBase};
 
   a {
     text-decoration: none;
     * {
-      color: ${({ theme }: themePropTypes) => theme.txt_color_base};
+      color: ${({ theme }: themePropTypes) => theme.txtColorBase};
     }
   }
 
