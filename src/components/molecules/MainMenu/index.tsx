@@ -43,8 +43,8 @@ const MainMenu = (): React.ReactElement => {
         </MenuItem>
         <MenuItem data-active={isWhoWeAre}>
           <PersonSVG />
-          <Link href="quem-somos">
-            <a aria-label="Quem somos" rel="noreferrer" href="quem-somos">
+          <Link href="/quem-somos">
+            <a aria-label="Quem somos" rel="noreferrer" href="/quem-somos">
               Quem Somos
             </a>
           </Link>

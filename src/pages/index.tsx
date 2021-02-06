@@ -1,32 +1,15 @@
 import React from 'react'
 import PosCard from '@molecules/PostCard'
 import { Container } from '@pageStyles/index'
+import { useGetPostListContext } from '@context/GetPostList'
+import { PostPropTypes } from '@proptypes/PostPropTypes'
 
-export async function getStaticProps() {
-  const data = await fetch(process.env.notion_table_posts).then(res =>
-    res.json()
-  )
+const Home = () => {
+  const { postList } = useGetPostListContext()
 
-  if (!data) {
-    return {
-      notFound: true
-    }
-  }
-
-  return {
-    props: {
-      postListProps: data
-    }
-  }
-}
-
-const Home = ({ postListProps }) => {
-  const postListFilter = postListProps.filter(({ status }) => {
-    return status === 'ativo'
-  })
-
-  const postListRender = postListFilter.map(
-    ({ id, data, titulo, descricao, foto, video }, index) => {
+  const postListRender = postList
+    .filter(({ status }: any) => status === 'ativo')
+    .map(({ id, data, titulo, descricao, foto, video }: any, index) => {
       return (
         <PosCard
           key={index}
@@ -38,8 +21,7 @@ const Home = ({ postListProps }) => {
           postSmallDesc={descricao}
         />
       )
-    }
-  )
+    })
   return <Container>{postListRender}</Container>
 }
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  color: ${({ theme }) => theme.color_orange_medium};
+  color: ${({ theme }) => theme.colorOrangeMedium};
   font-size: 90px;
   text-indent: -9999em;
   overflow: hidden;

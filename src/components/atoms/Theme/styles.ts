@@ -1,35 +1,35 @@
 export const defaultTheme = {
-  color_orange_light: '#ff7b29',
-  color_orange_medium: '#FF6000',
-  color_orange_dark: '#ac4200',
-  l_aside_width: '320px',
-  r_aside_width: '60px'
+  colorOrangeLight: '#ff7b29',
+  colorOrangeMedium: '#FF6000',
+  colorOrangeDark: '#ac4200',
+  LAsideWidth: '320px',
+  RAsideWidth: '60px'
 }
 
 export const darkTheme = {
-  bg_body: '#383838',
-  bg_dark: '#272727',
-  bg_light: '#383838',
+  bgBody: '#383838',
+  bgDark: '#272727',
+  bgLight: '#383838',
   bg_reverse: '#F8F8F8',
-  border_color: '#515151',
-  txt_color_base: '#E8E8E8',
-  txt_color_dark: '#646464',
-  txt_color_mid: '#E8E8E8',
-  txt_color_light: '#FFF',
+  borderColor: '#515151',
+  txtColorBase: '#E8E8E8',
+  txtColorDark: '#646464',
+  txtColorMid: '#E8E8E8',
+  txtColorLight: '#FFF',
   bg_mobmenu: '#000',
   ...defaultTheme
 }
 
 export const lightTheme = {
-  bg_body: '#FFF',
-  bg_dark: '#E7E7E7',
-  bg_light: '#F8F8F8',
+  bgBody: '#FFF',
+  bgDark: '#E7E7E7',
+  bgLight: '#F8F8F8',
   bg_reverse: '#272727',
-  border_color: '#A6A6A6',
-  txt_color_base: '#272727',
-  txt_color_dark: '#272727',
-  txt_color_mid: '#383838',
-  txt_color_light: '#FFF',
+  borderColor: '#A6A6A6',
+  txtColorBase: '#272727',
+  txtColorDark: '#272727',
+  txtColorMid: '#383838',
+  txtColorLight: '#FFF',
   bg_mobmenu: '#E7E7E7',
   ...defaultTheme
 }

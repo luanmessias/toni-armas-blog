@@ -12,7 +12,9 @@ type ContextType = {
 
 const SearchFormContext = createContext<ContextType | null>(null)
 
-const SearchFormProvider = ({ children }: ChildrenPropTtypes): React.ReactElement => {
+const SearchFormProvider = ({
+  children
+}: ChildrenPropTtypes): React.ReactElement => {
   const [searchForm, setSearchForm] = useState(false)
 
   return (
@@ -27,8 +29,9 @@ const SearchFormProvider = ({ children }: ChildrenPropTtypes): React.ReactElemen
 
 const useSearchFormContext = (): ContextType => {
   const context = useContext(SearchFormContext)
-  if (!context)
+  if (!context) {
     throw new Error('useSearchForm must be used within a SearchFormProviders')
+  }
   return context
 }
 

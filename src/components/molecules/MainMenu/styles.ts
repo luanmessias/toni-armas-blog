@@ -36,7 +36,7 @@ export const MenuItem = styled.li`
 
   &[data-active='true'],
   &:hover {
-    background-color: ${({ theme }) => theme.color_orange_medium};
+    background-color: ${({ theme }) => theme.colorOrangeMedium};
     svg {
       opacity: 1;
     }
@@ -48,7 +48,7 @@ export const MenuItem = styled.li`
     text-transform: uppercase;
     text-decoration: none;
     font-size: 20px;
-    color: ${({ theme }) => theme.txt_color_base};
+    color: ${({ theme }) => theme.txtColorBase};
   }
 
   @media ${maxDevice.laptop} {

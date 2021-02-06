@@ -1,5 +1,4 @@
 import React from 'react'
-import { NotionRenderer } from 'react-notion'
 
 import 'react-notion/src/styles.css'
 import 'prismjs/themes/prism-tomorrow.css'
@@ -16,7 +15,6 @@ export async function getStaticProps() {
   }
 }
 const Contact = (blockMap): React.ReactElement => {
-  console.log(blockMap)
   return (
     <>
       <h1>CONTACT</h1>

@@ -3,15 +3,15 @@ import { maxDevice } from '@globalStyles/device'
 
 export const Container = styled.div`
   box-sizing: border-box;
-  background-color: ${({ theme }) => theme.bg_dark};
-  border-bottom: 1px solid ${({ theme }) => theme.border_color};
+  background-color: ${({ theme }) => theme.bgDark};
+  border-bottom: 1px solid ${({ theme }) => theme.borderColor};
   position: fixed;
   top: 0px;
   width: auto;
   width: 100%;
   padding: 20px;
-  padding-left: calc(${({ theme }) => theme.l_aside_width} + 20px);
-  padding-right: calc(${({ theme }) => theme.r_aside_width} + 20px);
+  padding-left: calc(${({ theme }) => theme.LAsideWidth} + 20px);
+  padding-right: calc(${({ theme }) => theme.RAsideWidth} + 20px);
   z-index: 1;
 
   &[data-active='false'] {
@@ -45,5 +45,22 @@ export const SearchInput = styled.input`
   height: 45px;
   box-sizing: border-box;
   border: 0px;
-  background-color: ${({ theme }) => theme.bg_light};
+  background-color: ${({ theme }) => theme.bgLight};
+  color: ${({ theme }) => theme.txtColorBase};
+`
+
+export const SearchResultContainer = styled.div`
+  box-sizing: border-box;
+  max-height: 0px;
+  opacity: 0;
+  overflow-y: auto;
+  visibility: hidden;
+
+  &[data-active='true'] {
+    padding: 10px;
+    opacity: 1;
+    max-height: 300px;
+    visibility: visible;
+    margin-top: 20px;
+  }
 `

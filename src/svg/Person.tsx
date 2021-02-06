@@ -1,15 +1,8 @@
 import React from 'react'
 
-type SvgPropTypes = {
-  props: {
-    width: number
-    height: string
-    viewBox: string
-    fill: string
-  }
-}
+import { SvgPropTypes } from '@proptypes/SvgPropTypes'
 
-const PersonSVG = (props: SvgPropTypes | any): React.ReactElement => (
+const PersonSVG = (props: SvgPropTypes | null): React.ReactElement => (
   <svg width={20} height={14} viewBox="0 0 20 14" fill="none" {...props}>
     <path
       fillRule="evenodd"

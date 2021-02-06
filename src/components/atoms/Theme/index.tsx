@@ -8,12 +8,12 @@ type ChildrenProps = {
 }
 
 type ThemeType = {
-  bg_body: string
-  bg_dark: string
-  bg_light: string
-  txt_color_dark: string
-  txt_color_mid: string
-  txt_color_light: string
+  bgBody: string
+  bgDark: string
+  bgLight: string
+  txtColorDark: string
+  txtColorMid: string
+  txtColorLight: string
 }
 
 const Theme = ({ children }: ChildrenProps): React.ReactElement => {

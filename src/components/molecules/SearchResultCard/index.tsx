@@ -9,25 +9,19 @@ import {
   PostDate,
   Title,
   SmallDesc,
-  ReadPostLink
+  TextContainer
 } from './styles'
-
-type PhotoPropTypes = {
-  name: string
-  url: string
-  rawUrl: string
-}
 
 type PostCardProps = {
   postId: string
-  photoUrl: PhotoPropTypes
+  photoUrl: string
   postDate: string
   postTitle: string
   postSmallDesc: string
   youtubeUrl: string
 }
 
-const PostCard = ({
+const SearchResultCard = ({
   postId,
   photoUrl,
   postDate,
@@ -53,22 +47,23 @@ const PostCard = ({
   }
 
   return (
-    <>
-      <Container>
-        <CircleMask
-          style={{
-            backgroundImage: `url(${checkPhoto(photoUrl, youtubeUrl)})`
-          }}
-        />
-        <PostDate>{`${formattedDate}`}</PostDate>
-        <Title>{trimmedTitle}</Title>
-        <SmallDesc>{trimmedDesc}</SmallDesc>
-        <Link href={`/post/${postId}`}>
-          <ReadPostLink href={`/post/${postId}`}>LER POSTAGEM</ReadPostLink>
-        </Link>
-      </Container>
-    </>
+    <Link href={`/post/${postId}`}>
+      <a href={`/post/${postId}`}>
+        <Container>
+          <CircleMask
+            style={{
+              backgroundImage: `url(${checkPhoto(photoUrl, youtubeUrl)})`
+            }}
+          />
+          <TextContainer>
+            <PostDate>{`${formattedDate}`}</PostDate>
+            <Title>{trimmedTitle}</Title>
+            <SmallDesc>{trimmedDesc}</SmallDesc>
+          </TextContainer>
+        </Container>
+      </a>
+    </Link>
   )
 }
 
-export default PostCard
+export default SearchResultCard

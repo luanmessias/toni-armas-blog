@@ -12,7 +12,7 @@ export const SocialItem = styled.li`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.txt_color_dark};
+  background-color: ${({ theme }) => theme.txtColorDark};
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -24,7 +24,7 @@ export const SocialItem = styled.li`
   }
 
   &:hover {
-    background-color: ${({ theme }) => theme.color_orange_medium};
+    background-color: ${({ theme }) => theme.colorOrangeMedium};
   }
 `
 

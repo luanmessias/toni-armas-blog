@@ -11,7 +11,9 @@ type ContextType = {
 
 const DarkModeContext = createContext<ContextType | null>(null)
 
-const DarkModeProvider = ({ children }: ChildrenPropTtypes): React.ReactElement => {
+const DarkModeProvider = ({
+  children
+}: ChildrenPropTtypes): React.ReactElement => {
   const [darkMode, setDarkMode] = useState(true)
 
   return (
@@ -23,8 +25,9 @@ const DarkModeProvider = ({ children }: ChildrenPropTtypes): React.ReactElement 
 
 const useDarkModeContext = (): ContextType => {
   const context = useContext(DarkModeContext)
-  if (!context)
+  if (!context) {
     throw new Error('useDarkMode must be used within a DarkModeProviders')
+  }
   return context
 }
 
