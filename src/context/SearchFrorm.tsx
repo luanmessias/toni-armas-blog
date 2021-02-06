@@ -1,5 +1,4 @@
-import React, { createContext, useEffect, useState, useContext } from 'react'
-import Router from 'next/router'
+import React, { createContext, useState, useContext } from 'react'
 import SearchBar from '@molecules/SearchBar'
 
 type ChildrenPropTtypes = {
@@ -17,10 +16,6 @@ const SearchFormProvider = ({
   children
 }: ChildrenPropTtypes): React.ReactElement => {
   const [searchForm, setSearchForm] = useState(false)
-
-  useEffect(() => {
-    Router.events.on('routeChangeStart', setSearchForm(false))
-  }, [])
 
   return (
     <>
