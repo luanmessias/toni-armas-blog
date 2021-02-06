@@ -1,20 +1,33 @@
 import React, { useState, useEffect } from 'react'
 import { useSearchFormContext } from '@context/SearchFrorm'
 import { useGetPostListContext } from '@context/GetPostList'
+import SearchResultCard from '@molecules/SearchResultCard'
+import { useRouter } from 'next/router'
+import CloseSearch from '@atoms/CloseSearch'
 import {
   Container,
+  Content,
   SearchTitle,
   SearchInput,
-  SearchResultContainer
+  SearchResultContainer,
+  CloseSearchButton
 } from './styles'
-import SearchResultCard from '@molecules/SearchResultCard'
 
 const SearchBar = (): React.ReactElement => {
   const [searchTerm, setSearchTerm] = useState('')
   const [showResult, setShowResult] = useState(false)
   const [searchResults, setSearchResults] = useState([])
-  const { searchForm } = useSearchFormContext()
+  const { searchForm, setSearchForm } = useSearchFormContext()
   const { postList } = useGetPostListContext()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (searchForm) {
+      setSearchForm(!searchForm)
+      setSearchResults([])
+      setSearchTerm('')
+    }
+  }, [router.asPath])
 
   const handleChange = event => {
     const inputValue = event.target.value.toLowerCase()
@@ -53,19 +66,23 @@ const SearchBar = (): React.ReactElement => {
   )
 
   return (
-    <>
-      <Container data-active={searchForm}>
+    <Container data-active={searchForm}>
+      <Content>
+        <CloseSearchButton>
+          <CloseSearch />
+        </CloseSearchButton>
         <SearchTitle>Buscar postagem</SearchTitle>
         <SearchInput
           type="text"
           placeholder="Digite sua busca"
           onChange={handleChange}
+          value={searchTerm}
         />
         <SearchResultContainer data-active={showResult}>
           {searchResultRender}
         </SearchResultContainer>
-      </Container>
-    </>
+      </Content>
+    </Container>
   )
 }
 

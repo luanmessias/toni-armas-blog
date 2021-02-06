@@ -32,11 +32,17 @@ export const Container = styled.div`
   }
 `
 
+export const Content = styled.div`
+  position: relative;
+  width: 100%;
+`
+
 export const SearchTitle = styled.h1`
   box-sizing: border-box;
   width: 100%;
   font-family: 'Titillium Web', sans-serif;
-  font-weight: 400;
+  font-weight: 600;
+  margin-top: 0px;
 `
 
 export const SearchInput = styled.input`
@@ -62,5 +68,16 @@ export const SearchResultContainer = styled.div`
     max-height: 300px;
     visibility: visible;
     margin-top: 20px;
+  }
+`
+export const CloseSearchButton = styled.div`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  @media ${maxDevice.laptop} {
+    top: inherit;
+    bottom: 5px;
+    right: 10px;
   }
 `

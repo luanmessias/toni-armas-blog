@@ -7,7 +7,7 @@ type ChildrenPropTtypes = {
 
 type ContextType = {
   searchForm: boolean
-  setSearchForm: (darkMode: boolean) => void
+  setSearchForm: (searchForm: boolean) => void
 }
 
 const SearchFormContext = createContext<ContextType | null>(null)

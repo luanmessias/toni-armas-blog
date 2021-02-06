@@ -29,7 +29,7 @@ export const Container = styled.aside`
     padding: 15px;
     border-radius: 10px;
     border: 0px;
-    background-color: ${({ theme }) => theme.bg_mobmenu};
+    background-color: ${({ theme }) => theme.bgMobMenu};
     overflow: hidden;
     right: -100%;
     box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.2);

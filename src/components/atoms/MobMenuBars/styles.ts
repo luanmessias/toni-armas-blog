@@ -4,10 +4,10 @@ export const Circle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.bg_mobmenu};
+  background-color: ${({ theme }) => theme.bgMobMenu};
   border-radius: 100%;
   position: fixed;
-  right: 25px;
+  right: 30px;
   top: 25px;
   width: 40px;
   height: 40px;
@@ -46,12 +46,11 @@ export const Container = styled.div`
   > div {
     width: 20px;
     height: 2px;
-    background-color: ${({ theme }) => theme.bg_reverse};
+    background-color: ${({ theme }) => theme.bgReverse};
   }
 
   &[data-active='true'] {
     width: 30px;
-    margin-top: -10px;
     > div {
       width: 30px;
     }
