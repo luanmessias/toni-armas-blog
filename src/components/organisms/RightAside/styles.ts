@@ -3,15 +3,15 @@ import { maxDevice } from '@globalStyles/device'
 
 export const Container = styled.aside`
   box-sizing: border-box;
-  border-left: 1px solid ${({ theme }) => theme.border_color};
-  background: ${({ theme }) => theme.bg_dark};
+  border-left: 1px solid ${({ theme }) => theme.borderColor};
+  background: ${({ theme }) => theme.bgDark};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   position: fixed;
   height: 100%;
-  width: ${({ theme }) => theme.r_aside_width};
+  width: ${({ theme }) => theme.RAsideWidth};
   top: 0;
   right: 0;
   z-index: 999;
@@ -22,9 +22,9 @@ export const Container = styled.aside`
       &:hover {
         svg {
           transform: scale(1.2);
-          fill: ${({ theme }) => theme.color_orange_medium};
+          fill: ${({ theme }) => theme.colorOrangeMedium};
           * {
-            fill: ${({ theme }) => theme.color_orange_medium};
+            fill: ${({ theme }) => theme.colorOrangeMedium};
           }
         }
       }
@@ -38,7 +38,7 @@ export const Container = styled.aside`
     bottom: 0;
     top: inherit;
     border-left: none;
-    border-top: 1px solid ${({ theme }) => theme.border_color};
+    border-top: 1px solid ${({ theme }) => theme.borderColor};
     > div {
       display: flex;
       flex-direction: row;

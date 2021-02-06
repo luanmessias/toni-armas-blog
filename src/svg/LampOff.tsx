@@ -1,15 +1,8 @@
 import React from 'react'
 
-type SvgPropTypes = {
-  props: {
-    width: number
-    height: string
-    viewBox: string
-    fill: string
-  }
-}
+import { SvgPropTypes } from '@proptypes/SvgPropTypes'
 
-const lampOffSVG = (props: SvgPropTypes | any): React.ReactElement => (
+const lampOffSVG = (props: SvgPropTypes | null): React.ReactElement => (
   <svg width={14} height={21} viewBox="0 0 14 21" fill="none" {...props}>
     <path
       fillRule="evenodd"

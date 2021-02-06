@@ -1,15 +1,8 @@
 import React from 'react'
 
-type SvgPropTypes = {
-  props: {
-    width: number
-    height: string
-    viewBox: string
-    fill: string
-  }
-}
+import { SvgPropTypes } from '@proptypes/SvgPropTypes'
 
-const lampOnSVG = (props: SvgPropTypes | any): React.ReactElement => (
+const lampOnSVG = (props: SvgPropTypes | null): React.ReactElement => (
   <svg width={14} height={21} viewBox="0 0 14 21" fill="none" {...props}>
     <path
       d="M4 20C4 20.55 4.45 21 5 21H9C9.55 21 10 20.55 10 20V19H4V20Z"

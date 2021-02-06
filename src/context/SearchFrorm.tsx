@@ -37,7 +37,6 @@ const useSearchFormContext = (): ContextType => {
   if (!context) {
     throw new Error('useSearchForm must be used within a SearchFormProviders')
   }
-
   return context
 }
 

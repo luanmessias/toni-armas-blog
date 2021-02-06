@@ -5,24 +5,24 @@ const config = {
   animTime: '.3s'
 }
 
-const lAsideWidth = ({ theme }) => theme.l_aside_width
-const rAsideWidth = ({ theme }) => theme.r_aside_width
+const lAsideWidth = ({ theme }) => theme.LAsideWidth
+const rAsideWidth = ({ theme }) => theme.RAsideWidth
 
 type themePropTypes = {
   theme: {
-    color_orange_light: string
-    color_orange_medium: string
-    color_orange_dark: string
-    l_aside_width: string
-    r_aside_width: string
-    bg_body: string
-    bg_dark: string
-    bg_light: string
-    border_color: string
-    txt_color_base: string
-    txt_color_dark: string
-    txt_color_mid: string
-    txt_color_light: string
+    colorOrangeLight: string
+    colorOrangeMedium: string
+    colorOrangeDark: string
+    LAsideWidth: string
+    RAsideWidth: string
+    bgBody: string
+    bgDark: string
+    bgLight: string
+    borderColor: string
+    txtColorBase: string
+    txtColorDark: string
+    txtColorMid: string
+    txtColorLight: string
   }
 }
 
@@ -52,14 +52,31 @@ const GlobalStyle = createGlobalStyle`
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.color_orange_medium};
+    background-color: ${({ theme }) => theme.colorOrangeMedium};
     border-radius: 5px;
   }
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: ${({ theme }) => theme.color_orange_medium};
+    background: ${({ theme }) => theme.colorOrangeMedium};
   }
+}
+
+body {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  background: ${({ theme }: themePropTypes) => theme.bgBody};
+  color: ${({ theme }: themePropTypes) => theme.txtColorBase};
+
+  a {
+    text-decoration: none;
+    * {
+      color: ${({ theme }: themePropTypes) => theme.txtColorBase};
+    }
+  }
+
+  overflow-x: hidden;
+
+
 }
 
 body {

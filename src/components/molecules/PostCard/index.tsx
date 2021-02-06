@@ -12,9 +12,15 @@ import {
   ReadPostLink
 } from './styles'
 
+type PhotoPropTypes = {
+  name: string
+  url: string
+  rawUrl: string
+}
+
 type PostCardProps = {
   postId: string
-  photoUrl: string
+  photoUrl: PhotoPropTypes
   postDate: string
   postTitle: string
   postSmallDesc: string

@@ -5,7 +5,7 @@ export const Container = styled.div`
   &[data-active='true'] {
     svg {
       * {
-        fill: ${({ theme }) => theme.color_orange_medium};
+        fill: ${({ theme }) => theme.colorOrangeMedium};
       }
     }
   }

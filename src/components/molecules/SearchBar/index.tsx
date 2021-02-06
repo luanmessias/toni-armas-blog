@@ -23,7 +23,7 @@ const SearchBar = (): React.ReactElement => {
   }
 
   useEffect(() => {
-    const results = postList.filter(({ titulo }) =>
+    const results = postList.filter(({ titulo }: any) =>
       titulo.toLowerCase().includes(searchTerm)
     )
 

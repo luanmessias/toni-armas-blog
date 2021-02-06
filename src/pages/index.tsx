@@ -2,13 +2,14 @@ import React from 'react'
 import PosCard from '@molecules/PostCard'
 import { Container } from '@pageStyles/index'
 import { useGetPostListContext } from '@context/GetPostList'
+import { PostPropTypes } from '@proptypes/PostPropTypes'
 
 const Home = () => {
   const { postList } = useGetPostListContext()
 
   const postListRender = postList
-    .filter(({ status }) => status === 'ativo')
-    .map(({ id, data, titulo, descricao, foto, video }, index) => {
+    .filter(({ status }: any) => status === 'ativo')
+    .map(({ id, data, titulo, descricao, foto, video }: any, index) => {
       return (
         <PosCard
           key={index}

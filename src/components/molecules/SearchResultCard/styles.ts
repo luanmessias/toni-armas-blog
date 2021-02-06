@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { minDevice, maxDevice } from '@globalStyles/device'
 export const CircleMask = styled.div`
   position: relative;
   width: 80px;
@@ -51,10 +50,10 @@ export const ReadPostLink = styled.a`
   font-weight: 600;
   padding: 10px 20px;
   border-radius: 3px;
-  background-color: ${({ theme }) => theme.color_orange_medium};
+  background-color: ${({ theme }) => theme.colorOrangeMedium};
   text-decoration: none;
   &:hover {
-    background-color: ${({ theme }) => theme.color_orange_dark};
+    background-color: ${({ theme }) => theme.colorOrangeDark};
     transform: scale(1.1);
   }
 `
@@ -64,13 +63,13 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: left;
-  background-color: ${({ theme }) => theme.bg_dark};
+  background-color: ${({ theme }) => theme.bgDark};
   padding: 15px;
   margin-bottom: 18px;
   width: 100%;
 
   &:hover {
-    background-color: ${({ theme }) => theme.bg_light};
+    background-color: ${({ theme }) => theme.bgLight};
 
     ${CircleMask} {
       transform: scale(1.2);

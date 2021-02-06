@@ -1,11 +1,8 @@
 import React from 'react'
-
 import 'prismjs/themes/prism-tomorrow.css'
-
 import { NotionRenderer } from 'react-notion'
 
 const PostPage = ({ postTitle, postContent }) => {
-  console.log(postTitle)
   return (
     <>
       {postTitle.titulo}

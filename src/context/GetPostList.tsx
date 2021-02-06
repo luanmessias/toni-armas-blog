@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useState, useContext } from 'react'
-import axios from 'axios'
 
 type ChildrenPropTtypes = {
   children: React.ReactNode
@@ -16,11 +15,10 @@ const GetPostListProvider = ({
 }: ChildrenPropTtypes): React.ReactElement => {
   const [postList, setPostList] = useState([])
 
-  useEffect(async () => {
-    const res = await fetch(process.env.notion_table_posts)
-    const data = await res.json()
-
-    setPostList(data)
+  useEffect(() => {
+    fetch(process.env.notion_table_posts)
+      .then(response => response.json())
+      .then(data => setPostList(data))
   }, [])
 
   return (
