@@ -12,7 +12,7 @@ export const Container = styled.div`
   padding: 20px;
   padding-left: calc(${({ theme }) => theme.LAsideWidth} + 20px);
   padding-right: calc(${({ theme }) => theme.RAsideWidth} + 20px);
-  z-index: 1;
+  z-index: 10;
 
   &[data-active='false'] {
     opacity: 0;
@@ -76,8 +76,7 @@ export const CloseSearchButton = styled.div`
   right: 15px;
 
   @media ${maxDevice.laptop} {
-    top: inherit;
-    bottom: 5px;
+    top: 63px;
     right: 10px;
   }
 `

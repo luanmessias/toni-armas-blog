@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { maxDevice } from '@globalStyles/device'
+
 export const CircleMask = styled.div`
   position: relative;
   width: 80px;
@@ -8,6 +10,10 @@ export const CircleMask = styled.div`
   background-size: cover;
   background-position: center;
   margin-right: 20px;
+
+  @media ${maxDevice.laptop} {
+    display: none;
+  }
 `
 
 export const TextContainer = styled.div`
@@ -67,12 +73,26 @@ export const Container = styled.div`
   padding: 15px;
   margin-bottom: 18px;
   width: 100%;
+  position: relative;
 
   &:hover {
     background-color: ${({ theme }) => theme.bgLight};
 
     ${CircleMask} {
       transform: scale(1.2);
+    }
+  }
+
+  @media ${maxDevice.laptop} {
+    flex-direction: column;
+    margin: 0px;
+    &:after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      margin-top: 30px;
+      background-color: ${({ theme }) => theme.bgLight};
     }
   }
 `

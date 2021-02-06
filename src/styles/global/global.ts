@@ -83,6 +83,7 @@ body {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
   background: ${({ theme }: themePropTypes) => theme.bgBody};
   color: ${({ theme }: themePropTypes) => theme.txtColorBase};
+  padding-bottom: 100px;
 
   a {
     text-decoration: none;
@@ -108,7 +109,6 @@ export const Main = styled.main`
   width: calc(100% - (${lAsideWidth} + ${rAsideWidth}));
   display: flex;
   flex-direction: column;
-  padding: 15px;
   margin-left: ${lAsideWidth};
   margin-right: ${rAsideWidth};
 

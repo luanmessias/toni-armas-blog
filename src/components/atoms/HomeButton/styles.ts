@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { maxDevice } from '@globalStyles/device'
 
 export const Container = styled.div`
   cursor: pointer;
@@ -9,5 +10,9 @@ export const Container = styled.div`
         fill: ${({ theme }) => theme.colorOrangeMedium};
       }
     }
+  }
+
+  @media ${maxDevice.laptop} {
+    display: none;
   }
 `

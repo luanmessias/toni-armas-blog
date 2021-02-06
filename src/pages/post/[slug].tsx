@@ -1,12 +1,43 @@
 import React from 'react'
-import 'prismjs/themes/prism-tomorrow.css'
+import convertDate from '@utils/convertDate'
+import checkPhoto from '@utils/checkPhoto'
 import { NotionRenderer } from 'react-notion'
+import 'react-notion/src/styles.css'
+import 'prismjs/themes/prism-tomorrow.css'
+
+import {
+  Container,
+  PostHeder,
+  PostHeaderContent,
+  PostDate,
+  PostTitle,
+  PostDesc
+} from '@pageStyles/postpage'
+import ArrowReturn from '@atoms/ArrowReturn'
 
 const PostPage = ({ postTitle, postContent }) => {
+  const { data, titulo, descricao, foto, video } = postTitle
+  const formattedDate = convertDate(data)
+  const bgImage = checkPhoto(foto, video)
+
   return (
     <>
-      {postTitle.titulo}
-      <NotionRenderer blockMap={postContent} />
+      <PostHeder
+        style={{
+          backgroundImage: `url(${bgImage})`
+        }}
+      >
+        <ArrowReturn />
+        <PostHeaderContent>
+          <PostDate>{formattedDate}</PostDate>
+          <PostTitle>{titulo}</PostTitle>
+          <PostDesc>{descricao}</PostDesc>
+        </PostHeaderContent>
+      </PostHeder>
+
+      <Container>
+        <NotionRenderer blockMap={postContent} />
+      </Container>
     </>
   )
 }

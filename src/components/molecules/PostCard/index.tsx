@@ -1,7 +1,8 @@
 import React from 'react'
 import convertDate from '@utils/convertDate'
 import cutString from '@utils/cutString'
-import ytPhotoExtract from '@utils/ytPhotoExtract'
+import checkPhoto from '@utils/checkPhoto'
+
 import Link from 'next/link'
 import {
   Container,
@@ -38,26 +39,14 @@ const PostCard = ({
   const formattedDate = convertDate(postDate)
   const trimmedTitle = cutString(postTitle, 80)
   const trimmedDesc = cutString(postSmallDesc, 80)
-
-  const checkPhoto = (foto, video) => {
-    if (video) {
-      return ytPhotoExtract(youtubeUrl, 1)
-    }
-
-    if (!foto && !video) {
-      return '/img/bg_top_mob.jpg'
-    } else {
-      const { url } = foto[0]
-      return url
-    }
-  }
+  const bgImage = checkPhoto(photoUrl, youtubeUrl)
 
   return (
     <>
       <Container>
         <CircleMask
           style={{
-            backgroundImage: `url(${checkPhoto(photoUrl, youtubeUrl)})`
+            backgroundImage: `url(${bgImage})`
           }}
         />
         <PostDate>{`${formattedDate}`}</PostDate>

@@ -68,7 +68,7 @@ const SearchBar = (): React.ReactElement => {
   return (
     <Container data-active={searchForm}>
       <Content>
-        <CloseSearchButton>
+        <CloseSearchButton onClick={() => setSearchTerm('')}>
           <CloseSearch />
         </CloseSearchButton>
         <SearchTitle>Buscar postagem</SearchTitle>
