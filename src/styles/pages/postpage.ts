@@ -107,3 +107,28 @@ export const PostTitle = styled.h1`
 export const PostDesc = styled.p`
   font-size: 18px;
 `
+export const VideoWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 100px;
+`
+export const VideoContainer = styled.div`
+  overflow: hidden;
+  position: relative;
+  width: calc(100% - 40px);
+
+  &:after {
+    padding-top: 56.25%;
+    display: block;
+    content: '';
+  }
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+`

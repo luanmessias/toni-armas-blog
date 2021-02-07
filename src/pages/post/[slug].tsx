@@ -12,7 +12,9 @@ import {
   PostDate,
   PostTitle,
   PostDesc,
-  PostContainer
+  PostContainer,
+  VideoWrapper,
+  VideoContainer
 } from '@pageStyles/postpage'
 import ArrowReturn from '@atoms/ArrowReturn'
 
@@ -20,6 +22,27 @@ const PostPage = ({ postTitle, postContent }) => {
   const { data, titulo, descricao, foto, video } = postTitle
   const formattedDate = convertDate(data)
   const bgImage = checkPhoto(foto, video)
+
+  const embedVideo = () => {
+    if (video) {
+      const regex = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
+      const vidArray = video.match(regex)
+      const vidCode = vidArray[7]
+
+      return (
+        <VideoWrapper>
+          <VideoContainer>
+            <iframe
+              src={`https://www.youtube.com/embed/${vidCode}`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </VideoContainer>
+        </VideoWrapper>
+      )
+    }
+  }
 
   return (
     <Container>
@@ -39,6 +62,8 @@ const PostPage = ({ postTitle, postContent }) => {
       <PostContainer>
         <NotionRenderer blockMap={postContent} />
       </PostContainer>
+
+      {embedVideo()}
     </Container>
   )
 }
