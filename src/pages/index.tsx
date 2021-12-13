@@ -3,8 +3,27 @@ import PosCard from '@molecules/PostCard'
 import { Container, PaginateContainer } from '@pageStyles/index'
 import { useGetPostListContext } from '@context/GetPostList'
 import ReactPaginate from 'react-paginate'
+import { createClient } from 'contentful'
 
-const Home = () => {
+export async function getStaticProps() {
+  const client = createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_KEY
+  })
+
+  const res = await client.getEntries({
+    content_type: 'posts'
+  })
+
+  return {
+    props: {
+      posts: res.items
+    }
+  }
+}
+
+const Home = ({ posts }) => {
+  console.log('🚀 ~ file: index.tsx ~ line 26 ~ Home ~ posts', posts)
   const { postList } = useGetPostListContext()
   const [pageNumber, setPageNumber] = useState(0)
 
