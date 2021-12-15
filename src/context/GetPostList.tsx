@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState, useContext } from 'react'
+import { createClient } from 'contentful'
 
 type ChildrenPropTtypes = {
   children: React.ReactNode
@@ -7,7 +8,6 @@ type ChildrenPropTtypes = {
 type ContextType = {
   postList: string[]
 }
-
 const GetPostListContext = createContext<ContextType | null>(null)
 
 const GetPostListProvider = ({
@@ -15,10 +15,17 @@ const GetPostListProvider = ({
 }: ChildrenPropTtypes): React.ReactElement => {
   const [postList, setPostList] = useState([])
 
+  const client = createClient({
+    space: process.env.contentful_space,
+    accessToken: process.env.contentful_acces_token
+  })
+
   useEffect(() => {
-    fetch(process.env.notion_table_posts)
-      .then(response => response.json())
-      .then(data => setPostList(data))
+    client
+      .getEntries({
+        content_type: 'blogPost'
+      })
+      .then(posts => setPostList(posts.items))
   }, [])
 
   return (
