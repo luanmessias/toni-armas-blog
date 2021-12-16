@@ -2,7 +2,7 @@ const cutString = (str: string, maxLength: number): string => {
   if (str.length <= maxLength) {
     return str
   } else {
-    return `${str.substr(0, Math.min(maxLength, str.lastIndexOf(' ')))}...`
+    return `${str.substring(0, Math.min(maxLength, str.lastIndexOf(' ')))}...`
   }
 }
 

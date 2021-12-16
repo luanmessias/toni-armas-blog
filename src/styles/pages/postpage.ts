@@ -5,58 +5,51 @@ export const Container = styled.div``
 
 export const PostContainer = styled.div`
   padding: 15px;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  color: ${({ theme }) => theme.txtColorBase};
 
-  .notion {
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
-    font-size: 1.25rem;
-    color: ${({ theme }) => theme.txtColorBase};
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Titillium Web', sans-serif;
+  }
 
-    .notion-h1,
-    .notion-h2,
-    .notion-h3 {
-      font-family: 'Titillium Web', sans-serif;
-    }
-
-    .notion-h1 {
-      font-size: 4rem;
-      @media ${maxDevice.tablet} {
-        font-size: 3rem;
-      }
-    }
-
-    .notion-h2 {
-      margin-top: 20px;
-      margin-bottom: 5px;
+  h1 {
+    font-size: 4rem;
+    @media ${maxDevice.tablet} {
       font-size: 3rem;
-      @media ${maxDevice.tablet} {
-        font-size: 2rem;
-      }
     }
+  }
 
-    .notion-h2 {
+  h2 {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 3rem;
+    @media ${maxDevice.tablet} {
       font-size: 2rem;
-      @media ${maxDevice.tablet} {
-        font-size: 1.5rem;
-      }
     }
+  }
 
-    .notion-text {
-      font-family: 'Roboto', Arial, Helvetica, sans-serif;
-      font-size: 1.25rem;
-
-      a {
-        color: ${({ theme }) => theme.colorOrangeMedium};
-      }
+  h3 {
+    font-size: 2rem;
+    @media ${maxDevice.tablet} {
+      font-size: 1.5rem;
     }
+  }
 
-    .notion-quote {
-      box-sizing: border-box;
-      width: 100%;
-      padding: 20px;
-      margin: 15px 0px;
-      border-left: 2px solid ${({ theme }) => theme.colorOrangeMedium};
-      background-color: ${({ theme }) => theme.bgDark};
-    }
+  p {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    margin: 15px 0px;
+  }
+
+  a,
+  strong {
+    color: ${({ theme }) => theme.colorOrangeMedium};
   }
 
   @media ${maxDevice.laptop} {

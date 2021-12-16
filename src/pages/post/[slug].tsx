@@ -1,9 +1,9 @@
 import React from 'react'
 import convertDate from '@utils/convertDate'
 import checkPhoto from '@utils/checkPhoto'
-import { NotionRenderer } from 'react-notion'
-import 'react-notion/src/styles.css'
-import 'prismjs/themes/prism-tomorrow.css'
+import { createClient } from 'contentful'
+import ArrowReturn from '@atoms/ArrowReturn'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 import {
   Container,
@@ -16,15 +16,18 @@ import {
   VideoWrapper,
   VideoContainer
 } from '@pageStyles/postpage'
-import ArrowReturn from '@atoms/ArrowReturn'
 
-const PostPage = ({ postTitle, postContent }) => {
-  const { data, titulo, descricao, foto, video } = postTitle
-  const formattedDate = convertDate(data)
-  const bgImage = checkPhoto(foto, video)
+const PostPage = ({ post }) => {
+  const formattedDate = convertDate(post.sys.createdAt)
+
+  const bgImage = checkPhoto(
+    post.fields.foto ? post.fields.foto.fields.file.url : null,
+    post.fields.video
+  )
 
   const embedVideo = () => {
-    if (video) {
+    if (post.fields.video) {
+      const { video } = post.fields
       const regex = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
       const vidArray = video.match(regex)
       const vidCode = vidArray[7]
@@ -54,71 +57,70 @@ const PostPage = ({ postTitle, postContent }) => {
         <ArrowReturn />
         <PostHeaderContent>
           <PostDate>{formattedDate}</PostDate>
-          <PostTitle>{titulo}</PostTitle>
-          <PostDesc>{descricao}</PostDesc>
+          <PostTitle>{post.fields.titulo}</PostTitle>
+          <PostDesc>{post.fields.descricao}</PostDesc>
         </PostHeaderContent>
       </PostHeder>
 
       <PostContainer>
-        <NotionRenderer blockMap={postContent} />
+        {documentToReactComponents(post.fields.conteudo)}
       </PostContainer>
 
       {embedVideo()}
     </Container>
   )
 }
-
 export async function getStaticProps(paths) {
   const { slug } = paths.params
 
-  // Get post data
-  const dataPost = await fetch(
-    `${process.env.notion_post_page}${slug}`
-  ).then(res => res.json())
+  const client = createClient({
+    space: process.env.contentful_space,
+    accessToken: process.env.contentful_acces_token
+  })
 
-  // Get table data
-  const dataTable = await fetch(process.env.notion_table_posts).then(res =>
-    res.json()
-  )
+  const res = await client.getEntries({
+    content_type: 'blogPost'
+  })
 
-  if (!dataPost || !dataTable) {
+  const post = res.items.find(({ fields }: any) => fields.slug === slug)
+
+  if (!post) {
     return {
       notFound: true
     }
   }
-
-  const dataTableFiltered = dataTable.find(({ id }) => {
-    return id === slug
-  })
-
   return {
     props: {
-      postTitle: dataTableFiltered,
-      postContent: dataPost
+      post
     }
   }
 }
 
 export async function getStaticPaths() {
-  const data = await fetch(process.env.notion_table_posts).then(res =>
-    res.json()
-  )
+  const client = createClient({
+    space: process.env.contentful_space,
+    accessToken: process.env.contentful_acces_token
+  })
 
-  if (!data) {
+  const res = await client.getEntries({
+    content_type: 'blogPost'
+  })
+
+  if (!res) {
     return {
       notFound: true
     }
   }
 
-  const postListFilter = data.filter(({ status }) => {
-    return status === 'ativo'
+  const postListFilter = res.items.filter(({ fields }: any) => {
+    return fields.ativo === true
   })
 
   const postParams = []
-  postListFilter.map(({ id }) => {
+  postListFilter.map(({ fields }: any) => {
     return postParams.push({
       params: {
-        slug: id
+        slug: fields.slug
       }
     })
   })

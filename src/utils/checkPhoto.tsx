@@ -2,8 +2,7 @@ import ytPhotoExtract from '@utils/ytPhotoExtract'
 
 const checkPhoto = (foto, video): string => {
   if (foto) {
-    const { url } = foto[0]
-    return url
+    return `http:${foto}`
   }
 
   if (video) {

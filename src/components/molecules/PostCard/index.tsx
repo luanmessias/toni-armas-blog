@@ -2,6 +2,7 @@ import React from 'react'
 import convertDate from '@utils/convertDate'
 import cutString from '@utils/cutString'
 import checkPhoto from '@utils/checkPhoto'
+import { PostPropTypes } from '@proptypes/PostPropTypes'
 
 import Link from 'next/link'
 import {
@@ -13,50 +14,34 @@ import {
   ReadPostLink
 } from './styles'
 
-type PhotoPropTypes = {
-  name: string
-  url: string
-  rawUrl: string
-}
-
 type PostCardProps = {
-  postId: string
-  photoUrl: PhotoPropTypes
-  postDate: string
-  postTitle: string
-  postSmallDesc: string
-  youtubeUrl: string
+  post: PostPropTypes
 }
 
-const PostCard = ({
-  postId,
-  photoUrl,
-  postDate,
-  postTitle,
-  postSmallDesc,
-  youtubeUrl
-}: PostCardProps): React.ReactElement => {
-  const formattedDate = convertDate(postDate)
-  const trimmedTitle = cutString(postTitle, 80)
-  const trimmedDesc = cutString(postSmallDesc, 80)
-  const bgImage = checkPhoto(photoUrl, youtubeUrl)
+const PostCard = ({ post }: PostCardProps): React.ReactElement => {
+  const postSlug = post.fields.slug
+  const postImage = checkPhoto(
+    post.fields.foto ? post.fields.foto.fields.file.url : null,
+    post.fields.video
+  )
+  const postDate = convertDate(post.fields.data)
+  const postTitle = cutString(post.fields.titulo, 80)
+  const postDesc = cutString(post.fields.descricao, 80)
 
   return (
-    <>
-      <Container>
-        <CircleMask
-          style={{
-            backgroundImage: `url(${bgImage})`
-          }}
-        />
-        <PostDate>{`${formattedDate}`}</PostDate>
-        <Title>{trimmedTitle}</Title>
-        <SmallDesc>{trimmedDesc}</SmallDesc>
-        <Link href={`/post/${postId}`}>
-          <ReadPostLink href={`/post/${postId}`}>LER POSTAGEM</ReadPostLink>
-        </Link>
-      </Container>
-    </>
+    <Container>
+      <CircleMask
+        style={{
+          backgroundImage: `url(${postImage})`
+        }}
+      />
+      <PostDate>{`${postDate}`}</PostDate>
+      <Title>{postTitle}</Title>
+      <SmallDesc>{postDesc}</SmallDesc>
+      <Link href={`/post/${postSlug}`}>
+        <ReadPostLink href={`/post/${postSlug}`}>LER POSTAGEM</ReadPostLink>
+      </Link>
+    </Container>
   )
 }
 

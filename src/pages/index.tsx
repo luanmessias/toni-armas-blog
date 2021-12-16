@@ -18,18 +18,8 @@ const Home = () => {
   const displayPosts = postList
     .slice(pagesVisted, pagesVisted + postsPerPage)
     .filter(({ fields }: any) => fields.ativo === true)
-    .map(({ fields }: any, index) => {
-      return (
-        <PosCard
-          key={index}
-          postId={fields.id}
-          youtubeUrl={fields.video}
-          photoUrl={fields.foto.fields.file.url}
-          postDate={fields.data}
-          postTitle={fields.titulo}
-          postSmallDesc={fields.conteudo}
-        />
-      )
+    .map((post: any, index) => {
+      return <PosCard key={index} post={post} />
     })
 
   return (
