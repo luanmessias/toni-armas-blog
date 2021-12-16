@@ -4,6 +4,7 @@ import { useGetPostListContext } from '@context/GetPostList'
 import SearchResultCard from '@molecules/SearchResultCard'
 import { useRouter } from 'next/router'
 import CloseSearch from '@atoms/CloseSearch'
+
 import {
   Container,
   Content,
@@ -36,9 +37,10 @@ const SearchBar = (): React.ReactElement => {
   }
 
   useEffect(() => {
-    const results = postList.filter(({ titulo }: any) =>
-      titulo.toLowerCase().includes(searchTerm)
-    )
+    const results = postList.filter((post: any) => {
+      const { titulo } = post.fields
+      return titulo.toLowerCase().includes(searchTerm)
+    })
 
     if (searchTerm === '') {
       setSearchResults([])
@@ -49,21 +51,9 @@ const SearchBar = (): React.ReactElement => {
     }
   }, [searchTerm])
 
-  const searchResultRender = searchResults.map(
-    ({ id, data, titulo, descricao, foto, video }, index) => {
-      return (
-        <SearchResultCard
-          key={index}
-          postId={id}
-          youtubeUrl={video}
-          photoUrl={foto}
-          postDate={data}
-          postTitle={titulo}
-          postSmallDesc={descricao}
-        />
-      )
-    }
-  )
+  const searchResultRender = searchResults.map((post: any, index) => {
+    return <SearchResultCard key={index} post={post} />
+  })
 
   return (
     <Container data-active={searchForm}>

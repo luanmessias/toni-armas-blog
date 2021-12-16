@@ -24,7 +24,7 @@ const PostCard = ({ post }: PostCardProps): React.ReactElement => {
     post.fields.foto ? post.fields.foto.fields.file.url : null,
     post.fields.video
   )
-  const postDate = convertDate(post.fields.data)
+  const postDate = convertDate(post.sys.createdAt)
   const postTitle = cutString(post.fields.titulo, 80)
   const postDesc = cutString(post.fields.descricao, 80)
 

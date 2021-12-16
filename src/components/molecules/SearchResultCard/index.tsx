@@ -1,8 +1,10 @@
 import React from 'react'
 import convertDate from '@utils/convertDate'
 import cutString from '@utils/cutString'
-import ytPhotoExtract from '@utils/ytPhotoExtract'
 import Link from 'next/link'
+import { PostPropTypes } from '@proptypes/PostPropTypes'
+import checkPhoto from '@utils/checkPhoto'
+
 import {
   Container,
   CircleMask,
@@ -13,52 +15,32 @@ import {
 } from './styles'
 
 type PostCardProps = {
-  postId: string
-  photoUrl: string
-  postDate: string
-  postTitle: string
-  postSmallDesc: string
-  youtubeUrl: string
+  post: PostPropTypes
 }
 
-const SearchResultCard = ({
-  postId,
-  photoUrl,
-  postDate,
-  postTitle,
-  postSmallDesc,
-  youtubeUrl
-}: PostCardProps): React.ReactElement => {
-  const formattedDate = convertDate(postDate)
-  const trimmedTitle = cutString(postTitle, 80)
-  const trimmedDesc = cutString(postSmallDesc, 80)
-
-  const checkPhoto = (foto, video) => {
-    if (video) {
-      return ytPhotoExtract(youtubeUrl, 1)
-    }
-
-    if (!foto && !video) {
-      return '/img/bg_top_mob.jpg'
-    } else {
-      const { url } = foto[0]
-      return url
-    }
-  }
+const SearchResultCard = ({ post }: PostCardProps): React.ReactElement => {
+  const postSlug = post.fields.slug
+  const postImage = checkPhoto(
+    post.fields.foto ? post.fields.foto.fields.file.url : null,
+    post.fields.video
+  )
+  const postDate = convertDate(post.sys.createdAt)
+  const postTitle = cutString(post.fields.titulo, 80)
+  const postDesc = cutString(post.fields.descricao, 80)
 
   return (
-    <Link href={`/post/${postId}`}>
-      <a href={`/post/${postId}`}>
+    <Link href={`/post/${postSlug}`}>
+      <a href={`/post/${postSlug}`}>
         <Container>
           <CircleMask
             style={{
-              backgroundImage: `url(${checkPhoto(photoUrl, youtubeUrl)})`
+              backgroundImage: `url(${postImage})`
             }}
           />
           <TextContainer>
-            <PostDate>{`${formattedDate}`}</PostDate>
-            <Title>{trimmedTitle}</Title>
-            <SmallDesc>{trimmedDesc}</SmallDesc>
+            <PostDate>{postDate}</PostDate>
+            <Title>{postTitle}</Title>
+            <SmallDesc>{postDesc}</SmallDesc>
           </TextContainer>
         </Container>
       </a>
