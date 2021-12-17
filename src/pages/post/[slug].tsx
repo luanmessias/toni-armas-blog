@@ -28,7 +28,8 @@ const PostPage = ({ post }) => {
   const embedVideo = () => {
     if (post.fields.video) {
       const { video } = post.fields
-      const regex = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
+      const regex =
+        /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
       const vidArray = video.match(regex)
       const vidCode = vidArray[7]
 
@@ -91,7 +92,8 @@ export async function getStaticProps(paths) {
   }
   return {
     props: {
-      post
+      post,
+      fallback: 'blocking'
     }
   }
 }
