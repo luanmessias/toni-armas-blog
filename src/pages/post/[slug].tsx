@@ -93,7 +93,7 @@ export async function getStaticProps(paths) {
   return {
     props: {
       post,
-      fallback: 'blocking'
+      revalidate: 30
     }
   }
 }
@@ -128,8 +128,8 @@ export async function getStaticPaths() {
   })
 
   return {
-    paths: postParams,
-    fallback: false
+    fallback: true,
+    paths: postParams
   }
 }
 
