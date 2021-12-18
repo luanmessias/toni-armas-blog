@@ -4,6 +4,7 @@ import checkPhoto from '@utils/checkPhoto'
 import { createClient } from 'contentful'
 import ArrowReturn from '@atoms/ArrowReturn'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { PostPropTypes, PostFieldsPropTypes } from '@proptypes/PostPropTypes'
 
 import {
   Container,
@@ -21,52 +22,43 @@ const client = createClient({
   space: process.env.contentful_space,
   accessToken: process.env.contentful_acces_token
 })
-
-export async function getStaticProps(paths) {
-  const { slug } = paths.params
-
+export const getStaticPaths = async () => {
   const { items } = await client.getEntries({
     content_type: 'blogPost'
   })
 
-  const post = items.find(({ fields }: any) => fields.slug === slug)
+  const paths = items.map((item: any) => {
+    return {
+      params: { slug: item.fields.slug }
+    }
+  })
 
   return {
-    props: {
-      post
-    },
-    revalidate: 10
+    paths,
+    fallback: true
   }
 }
 
-export async function getStaticPaths() {
+export async function getStaticProps({ params }) {
   const { items } = await client.getEntries({
-    content_type: 'blogPost'
+    content_type: 'blogPost',
+    'fields.slug': params.slug
   })
 
-  if (!items) {
+  if (!items.length) {
     return {
-      notFound: true
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
     }
   }
 
-  const postListFilter = items.filter(({ fields }: any) => {
-    return fields.ativo === true
-  })
-
-  const postParams = []
-
-  postListFilter.map(({ fields }: any) => {
-    return postParams.push({
-      params: {
-        slug: fields.slug
-      }
-    })
-  })
-
   return {
-    paths: postParams,
-    fallback: true
+    props: {
+      post: items[0]
+    },
+    revalidate: 10
   }
 }
 

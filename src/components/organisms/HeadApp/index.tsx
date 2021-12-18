@@ -27,7 +27,7 @@ const HeadApp = (): React.ReactElement => {
         type="image/png"
         sizes="32x32"
       />
-      <link rel="apple-touch-icon" href="/apple-icon.png" />
+      <link rel="apple-touch-icon" href="/pwa/icons/apple-icon.png" />
       <meta name="theme-color" content="#272727" />
     </Head>
   )
