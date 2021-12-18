@@ -4,7 +4,7 @@ import checkPhoto from '@utils/checkPhoto'
 import { createClient } from 'contentful'
 import ArrowReturn from '@atoms/ArrowReturn'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { PostPropTypes, PostFieldsPropTypes } from '@proptypes/PostPropTypes'
+import { useRouter } from 'next/router'
 
 import {
   Container,
@@ -22,49 +22,13 @@ const client = createClient({
   space: process.env.contentful_space,
   accessToken: process.env.contentful_acces_token
 })
-export const getStaticPaths = async () => {
-  const { items } = await client.getEntries({
-    content_type: 'blogPost'
-  })
-
-  const paths = items.map((item: any) => {
-    return {
-      params: { slug: item.fields.slug }
-    }
-  })
-
-  return {
-    paths,
-    fallback: true
-  }
-}
-
-export async function getStaticProps({ params }) {
-  const { items } = await client.getEntries({
-    content_type: 'blogPost',
-    'fields.slug': params.slug
-  })
-
-  if (!items.length) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false
-      }
-    }
-  }
-
-  return {
-    props: {
-      post: items[0]
-    },
-    revalidate: 10
-  }
-}
 
 const PostPage = ({ post }) => {
-  if (!post) return <div>Loading...</div>
+  const router = useRouter()
 
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
   const formattedDate = convertDate(post.sys.createdAt)
 
   const bgImage = checkPhoto(
@@ -117,6 +81,46 @@ const PostPage = ({ post }) => {
       {embedVideo()}
     </Container>
   )
+}
+
+export const getStaticPaths = async () => {
+  const { items } = await client.getEntries({
+    content_type: 'blogPost'
+  })
+
+  const paths = items.map((item: any) => {
+    return {
+      params: { slug: item.fields.slug }
+    }
+  })
+
+  return {
+    paths,
+    fallback: true
+  }
+}
+
+export async function getStaticProps({ params }) {
+  const { items } = await client.getEntries({
+    content_type: 'blogPost',
+    'fields.slug': params.slug
+  })
+
+  if (!items.length) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
+
+  return {
+    props: {
+      post: items[0]
+    },
+    revalidate: 10
+  }
 }
 
 export default PostPage
