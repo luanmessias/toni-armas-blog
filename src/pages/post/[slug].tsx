@@ -17,7 +17,14 @@ import {
   VideoContainer
 } from '@pageStyles/postpage'
 
+const client = createClient({
+  space: process.env.contentful_space,
+  accessToken: process.env.contentful_acces_token
+})
+
 const PostPage = ({ post }) => {
+  if (!post) return <div>Loading...</div>
+
   const formattedDate = convertDate(post.sys.createdAt)
 
   const bgImage = checkPhoto(
@@ -71,50 +78,18 @@ const PostPage = ({ post }) => {
     </Container>
   )
 }
-export async function getStaticProps(paths) {
-  const { slug } = paths.params
-
-  const client = createClient({
-    space: process.env.contentful_space,
-    accessToken: process.env.contentful_acces_token
-  })
-
-  const res = await client.getEntries({
-    content_type: 'blogPost'
-  })
-
-  const post = res.items.find(({ fields }: any) => fields.slug === slug)
-
-  if (!post) {
-    return {
-      notFound: true
-    }
-  }
-  return {
-    props: {
-      post
-    },
-    revalidate: 30
-  }
-}
-
 export async function getStaticPaths() {
-  const client = createClient({
-    space: process.env.contentful_space,
-    accessToken: process.env.contentful_acces_token
-  })
-
-  const res = await client.getEntries({
+  const { items } = await client.getEntries({
     content_type: 'blogPost'
   })
 
-  if (!res) {
+  if (!items) {
     return {
       notFound: true
     }
   }
 
-  const postListFilter = res.items.filter(({ fields }: any) => {
+  const postListFilter = items.filter(({ fields }: any) => {
     return fields.ativo === true
   })
 
@@ -129,7 +104,30 @@ export async function getStaticPaths() {
 
   return {
     paths: postParams,
-    fallback: 'blocking'
+    fallback: true
+  }
+}
+
+export async function getStaticProps(paths) {
+  const { slug } = paths.params
+
+  const { items } = await client.getEntries({
+    content_type: 'blogPost'
+  })
+
+  const post = items.find(({ fields }: any) => fields.slug === slug)
+
+  if (!post) {
+    return {
+      notFound: true
+    }
+  }
+
+  return {
+    props: {
+      post
+    },
+    revalidate: 10
   }
 }
 
