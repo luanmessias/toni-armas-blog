@@ -22,6 +22,54 @@ const client = createClient({
   accessToken: process.env.contentful_acces_token
 })
 
+export async function getStaticProps(paths) {
+  const { slug } = paths.params
+
+  const { items } = await client.getEntries({
+    content_type: 'blogPost'
+  })
+
+  const post = items.find(({ fields }: any) => fields.slug === slug)
+
+  return {
+    props: {
+      post
+    },
+    revalidate: 10
+  }
+}
+
+export async function getStaticPaths() {
+  const { items } = await client.getEntries({
+    content_type: 'blogPost'
+  })
+
+  if (!items) {
+    return {
+      notFound: true
+    }
+  }
+
+  const postListFilter = items.filter(({ fields }: any) => {
+    return fields.ativo === true
+  })
+
+  const postParams = []
+
+  postListFilter.map(({ fields }: any) => {
+    return postParams.push({
+      params: {
+        slug: fields.slug
+      }
+    })
+  })
+
+  return {
+    paths: postParams,
+    fallback: true
+  }
+}
+
 const PostPage = ({ post }) => {
   if (!post) return <div>Loading...</div>
 
@@ -77,58 +125,6 @@ const PostPage = ({ post }) => {
       {embedVideo()}
     </Container>
   )
-}
-export async function getStaticPaths() {
-  const { items } = await client.getEntries({
-    content_type: 'blogPost'
-  })
-
-  if (!items) {
-    return {
-      notFound: true
-    }
-  }
-
-  const postListFilter = items.filter(({ fields }: any) => {
-    return fields.ativo === true
-  })
-
-  const postParams = []
-  postListFilter.map(({ fields }: any) => {
-    return postParams.push({
-      params: {
-        slug: fields.slug
-      }
-    })
-  })
-
-  return {
-    paths: postParams,
-    fallback: true
-  }
-}
-
-export async function getStaticProps(paths) {
-  const { slug } = paths.params
-
-  const { items } = await client.getEntries({
-    content_type: 'blogPost'
-  })
-
-  const post = items.find(({ fields }: any) => fields.slug === slug)
-
-  if (!post) {
-    return {
-      notFound: true
-    }
-  }
-
-  return {
-    props: {
-      post
-    },
-    revalidate: 10
-  }
 }
 
 export default PostPage
