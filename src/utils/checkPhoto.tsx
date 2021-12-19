@@ -9,7 +9,7 @@ const checkPhoto = (foto, video): string => {
     return ytPhotoExtract(video, 1)
   }
 
-  return '/img/bg_top_mob.jpg'
+  return '/img/post-bg-default.jpg'
 }
 
 export default checkPhoto

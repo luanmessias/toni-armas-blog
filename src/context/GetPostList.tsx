@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState, useContext } from 'react'
-import { createClient } from 'contentful'
+import { contentfulClient } from '@utils/contentfulConect'
 
 type ChildrenPropTtypes = {
   children: React.ReactNode
@@ -7,6 +7,7 @@ type ChildrenPropTtypes = {
 
 type ContextType = {
   postList: string[]
+  preloader: boolean
 }
 const GetPostListContext = createContext<ContextType | null>(null)
 
@@ -14,22 +15,19 @@ const GetPostListProvider = ({
   children
 }: ChildrenPropTtypes): React.ReactElement => {
   const [postList, setPostList] = useState([])
-
-  const client = createClient({
-    space: process.env.contentful_space,
-    accessToken: process.env.contentful_acces_token
-  })
+  const [preloader, setPreloader] = useState(true)
 
   useEffect(() => {
-    client
+    contentfulClient
       .getEntries({
         content_type: 'blogPost'
       })
       .then(posts => setPostList(posts.items))
+      .then(() => setPreloader(!preloader))
   }, [])
 
   return (
-    <GetPostListContext.Provider value={{ postList }}>
+    <GetPostListContext.Provider value={{ postList, preloader }}>
       {children}
     </GetPostListContext.Provider>
   )

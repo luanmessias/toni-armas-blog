@@ -1,11 +1,10 @@
 import React from 'react'
 import convertDate from '@utils/convertDate'
 import checkPhoto from '@utils/checkPhoto'
-import { createClient } from 'contentful'
 import ArrowReturn from '@atoms/ArrowReturn'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { contentfulClient } from '@utils/contentfulConect'
 import { useRouter } from 'next/router'
-
 import {
   Container,
   PostHeder,
@@ -17,11 +16,6 @@ import {
   VideoWrapper,
   VideoContainer
 } from '@pageStyles/postpage'
-
-const client = createClient({
-  space: process.env.contentful_space,
-  accessToken: process.env.contentful_acces_token
-})
 
 const PostPage = ({ post }) => {
   const router = useRouter()
@@ -84,7 +78,7 @@ const PostPage = ({ post }) => {
 }
 
 export const getStaticPaths = async () => {
-  const { items } = await client.getEntries({
+  const { items } = await contentfulClient.getEntries({
     content_type: 'blogPost'
   })
 
@@ -101,7 +95,7 @@ export const getStaticPaths = async () => {
 }
 
 export async function getStaticProps({ params }) {
-  const { items } = await client.getEntries({
+  const { items } = await contentfulClient.getEntries({
     content_type: 'blogPost',
     'fields.slug': params.slug
   })

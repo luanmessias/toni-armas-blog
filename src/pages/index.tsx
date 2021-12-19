@@ -3,9 +3,10 @@ import PosCard from '@molecules/PostCard'
 import { Container, PaginateContainer } from '@pageStyles/index'
 import { useGetPostListContext } from '@context/GetPostList'
 import ReactPaginate from 'react-paginate'
+import LoadingSpinner from '@atoms/LoadingSpinner'
 
 const Home = () => {
-  const { postList } = useGetPostListContext()
+  const { postList, preloader } = useGetPostListContext()
   const [pageNumber, setPageNumber] = useState(0)
 
   const postsPerPage = 12
@@ -25,6 +26,8 @@ const Home = () => {
   return (
     <>
       <Container>
+        {preloader && <LoadingSpinner />}
+
         {displayPosts}
 
         <PaginateContainer>
