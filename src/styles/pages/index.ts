@@ -33,8 +33,6 @@ export const PaginateContainer = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 40px;
-      height: 40px;
       cursor: pointer;
       margin: 0px 5px;
       border-radius: 5px;
@@ -51,6 +49,14 @@ export const PaginateContainer = styled.div`
 
       &.pagActive {
         background-color: ${({ theme }) => theme.colorOrangeMedium};
+      }
+
+      a {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       a:active,

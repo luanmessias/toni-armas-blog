@@ -28,23 +28,25 @@ const Home = () => {
       <Container>
         {preloader && <LoadingSpinner />}
 
-        {displayPosts}
+        {!preloader && displayPosts}
 
-        <PaginateContainer>
-          <ReactPaginate
-            previousLabel={'<'}
-            nextLabel={'>'}
-            pageCount={pageCount}
-            onPageChange={changePage}
-            containerClassName={'paginate'}
-            previousLinkClassName={'pagPrev'}
-            nextLinkClassName={'pagNext'}
-            disabledClassName={'pagDisabled'}
-            activeClassName={'pagActive'}
-            pageRangeDisplayed={2}
-            marginPagesDisplayed={0}
-          />
-        </PaginateContainer>
+        {!preloader && (
+          <PaginateContainer>
+            <ReactPaginate
+              previousLabel={'<'}
+              nextLabel={'>'}
+              pageCount={pageCount}
+              onPageChange={changePage}
+              containerClassName={'paginate'}
+              previousLinkClassName={'pagPrev'}
+              nextLinkClassName={'pagNext'}
+              disabledClassName={'pagDisabled'}
+              activeClassName={'pagActive'}
+              pageRangeDisplayed={2}
+              marginPagesDisplayed={0}
+            />
+          </PaginateContainer>
+        )}
       </Container>
     </>
   )
