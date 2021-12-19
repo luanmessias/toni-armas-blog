@@ -14,11 +14,7 @@ import GlobalNormalize from '@globalStyles/normalize'
 import GlobalStyles, { Main } from '../styles/global/global'
 import { NProgressStyle } from '@globalStyles/nprogress'
 
-Router.events.on('routeChangeStart', url => {
-  console.log(`Loading: ${url}`)
-  NProgress.start()
-})
-
+Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
 

@@ -2,7 +2,7 @@ import ytPhotoExtract from '@utils/ytPhotoExtract'
 
 const checkPhoto = (foto, video): string => {
   if (foto) {
-    return `http:${foto}`
+    return `https:${foto}`
   }
 
   if (video) {
