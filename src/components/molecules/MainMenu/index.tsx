@@ -1,75 +1,52 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import HomeIconSVG from '@svg/Home'
-import PersonSVG from '@svg/Person'
 import TargetSVG from '@svg/Target'
-import CartSVG from '@svg/Cart'
+import { useGetPageListContext } from '@context/GetPageList'
 import { useMobileMenuContext } from '@context/MobileMenu'
 import { Container, MenuItem } from './styles'
 
 const MainMenu = (): React.ReactElement => {
-  const [isHomePage, setIsHomePage] = useState(false)
-  const [isWhoWeAre, setIsWhoWeAre] = useState(false)
+  const { pageList } = useGetPageListContext()
   const { setMobileMenu } = useMobileMenuContext()
 
   const router = useRouter()
+  const pageSlug = router.asPath.split('/').pop().split(';')[0]
 
   useEffect(() => {
     setMobileMenu(false)
-    if (router.pathname !== '/') {
-      setIsHomePage(false)
-    } else {
-      setIsHomePage(true)
-    }
-
-    if (router.pathname !== '/quem-somos') {
-      setIsWhoWeAre(false)
-    } else {
-      setIsWhoWeAre(true)
-    }
   }, [router, setMobileMenu])
+
+  const displayPages = pageList
+    .filter(({ fields }: any) => fields.ativo === true)
+    .slice(0)
+    .reverse()
+    .map(({ fields }: any, index) => {
+      return (
+        <MenuItem key={index} data-active={fields.slug === pageSlug}>
+          <TargetSVG />
+          <Link href={`/page/${fields.slug}`}>
+            <a aria-label="Pagina principal" rel="noreferrer" href="/">
+              {fields.titulo}
+            </a>
+          </Link>
+        </MenuItem>
+      )
+    })
 
   return (
     <>
       <Container>
-        <MenuItem data-active={isHomePage}>
-          <HomeIconSVG />
+        <MenuItem data-active={router.pathname === '/'}>
+          <TargetSVG />
           <Link href="/">
             <a aria-label="Pagina principal" rel="noreferrer" href="/">
               Home
             </a>
           </Link>
         </MenuItem>
-        <MenuItem data-active={isWhoWeAre}>
-          <PersonSVG />
-          <Link href="/quem-somos">
-            <a aria-label="Quem somos" rel="noreferrer" href="/quem-somos">
-              Quem Somos
-            </a>
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <TargetSVG />
-          <Link href="/">
-            <a aria-label="Curso de Tiro" rel="noreferrer" href="/">
-              Curso de Tiro
-            </a>
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <CartSVG />
-          <Link href="https://www.lojatoniarmas.com.br/">
-            <a
-              href="https://www.lojatoniarmas.com.br/"
-              rel="noreferrer"
-              target="_blank"
-              aria-label="Loja Toni Armas"
-            >
-              Nossa loja
-            </a>
-          </Link>
-        </MenuItem>
+
+        {displayPages}
       </Container>
     </>
   )

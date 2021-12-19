@@ -5,6 +5,7 @@ import { DarkModeProvider } from '@context/DarkMode'
 import { SearchFormProvider } from '@context/SearchFrorm'
 import { MobileMenuProvider } from '@context/MobileMenu'
 import { GetPostListProvider } from '@context/GetPostList'
+import { GetPageListProvider } from '@context/GetPageList'
 import Theme from '@atoms/Theme'
 import HeaderMobile from '@molecules/HeaderMobile'
 import RightAside from '@organisms/RightAside'
@@ -29,16 +30,18 @@ export default function MyApp({
       <DarkModeProvider>
         <Theme>
           <GetPostListProvider>
-            <SearchFormProvider>
-              <MobileMenuProvider>
-                <HeaderMobile />
-                <LeftAside />
-              </MobileMenuProvider>
-              <Main>
-                <Component {...pageProps} key={router.route} />
-              </Main>
-              <RightAside />
-            </SearchFormProvider>
+            <GetPageListProvider>
+              <SearchFormProvider>
+                <MobileMenuProvider>
+                  <HeaderMobile />
+                  <LeftAside />
+                </MobileMenuProvider>
+                <Main>
+                  <Component {...pageProps} key={router.route} />
+                </Main>
+                <RightAside />
+              </SearchFormProvider>
+            </GetPageListProvider>
           </GetPostListProvider>
           <GlobalNormalize />
           <GlobalStyles />
